@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        space: ["Space Grotesk", "sans-serif"]
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
