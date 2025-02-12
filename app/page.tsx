@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { Navbar } from "@/components/Navbar";
+import { Projects } from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -8,23 +9,31 @@ export default function Home() {
       <Navbar />
       <section
         id="projects"
-        className="min-h-screen px-[128px] pt-20 my-2 overflow-x-hidden"
+        className="min-h-screen px-[32px] xl:px-[64px] pt-20 my-2 overflow-x-hidden"
       >
-        <h2 className="text-3xl font-bold mb-4">Projects</h2>
-        <p>... your project listing here ...</p>
+        <Projects />
       </section>
 
-      <section id="stack" className="min-h-screen my-2 pt-20 px-[128px]">
+      <section
+        id="stack"
+        className="min-h-screen my-2 pt-20 px-[32px] xl:px-[64px]"
+      >
         <h2 className="text-3xl font-bold mb-4">My Stack</h2>
         <p>... your tech stack details here ...</p>
       </section>
 
-      <section id="about" className="min-h-screen my-2 pt-20 px-[128px]">
+      <section
+        id="about"
+        className="min-h-screen my-2 pt-20 px-[32px] xl:px-[64px]"
+      >
         <h2 className="text-3xl font-bold mb-4">About Me</h2>
         <p>... your biography or about section here ...</p>
       </section>
 
-      <section id="contact" className="min-h-screen my-2 pt-20 px-[128px]">
+      <section
+        id="contact"
+        className="min-h-screen my-2 pt-20 px-[32px] xl:px-[64px]"
+      >
         <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
         <p>... your contact information or form here ...</p>
       </section>
