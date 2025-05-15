@@ -1,41 +1,50 @@
-import { HeroSection } from "@/components/HeroSection";
+
+import { About } from "@/components/About";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { Projects } from "@/components/Projects";
+import Stack from "@/components/Stack";
+import { Xp } from "@/components/Xp";
 
 export default function Home() {
   return (
     <main className=" w-full h-full bg-[#10100E]">
-      <HeroSection />
+      <Hero />
       <Navbar />
       <section
         id="projects"
-        className="min-h-screen px-[32px] xl:px-[64px] pt-20 my-2 overflow-x-hidden"
+        className="min-h-screen px-[16px] xl:px-[64px] pt-20 my-2 overflow-x-hidden"
       >
         <Projects />
       </section>
 
       <section
         id="stack"
-        className="min-h-screen my-2 pt-20 px-[32px] xl:px-[64px]"
+        className="min-h-screen px-[16px] xl:px-[64px] pt-20 my-2 overflow-x-hidden border-t border-[#3E3E3E]"
       >
-        <h2 className="text-3xl font-bold mb-4">My Stack</h2>
-        <p>... your tech stack details here ...</p>
+        <Stack />
       </section>
 
       <section
         id="about"
-        className="min-h-screen my-2 pt-20 px-[32px] xl:px-[64px]"
+        className="min-h-screen px-[16px] xl:px-[64px] pt-20 my-2 border-t border-[#3E3E3E]"
       >
-        <h2 className="text-3xl font-bold mb-4">About Me</h2>
-        <p>... your biography or about section here ...</p>
+        <About />    
+      </section>
+
+      <section
+        id="experience"
+        className="min-h-screen px-[16px] xl:px-[64px] pt-20 my-2"
+      >
+        <Xp />
       </section>
 
       <section
         id="contact"
-        className="min-h-screen my-2 pt-20 px-[32px] xl:px-[64px]"
+        className="min-h-[50vh] my-2 mt-[200px] px-[32px] xl:px-[64px] bg-[linear-gradient(167.99deg,rgba(255,255,255,0.01)_2.2%,rgba(255,255,255,0.03)_97.12%)] border-t border-[#3E3E3E]"
       >
-        <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-        <p>... your contact information or form here ...</p>
+        <Footer />
       </section>
     </main>
   );
