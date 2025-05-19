@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const About = () => {
   return (
-    <div className="flex flex-col md:flex-row items-stretch w-full md:min-h-[calc(100vh-60px)]">
+    <div className="flex flex-col md:flex-row items-stretch w-full md:max-h-[calc(100vh-84px)] mt-4">
       {/* Text Section */}
       <div className="flex flex-col gap-[40px] md:gap-0 md:justify-between w-full md:w-[50%] p-4">
         <div>
