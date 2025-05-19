@@ -4,9 +4,9 @@ import React, { useState } from "react";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   return (
-    <div className="min-h-[calc(100vh-64px)] px-[16px] sm:px-[32px] xl:px-[64px] flex items-end relative">
-      <div className="pb-[15vh] lg:pb-[25vh] m-0 flex flex-col-reverse lg:flex-col justify-end w-full ">
-        <h1 className=" hidden lg:block lg:text-[clamp(8rem,-0.4329rem+13.1765vw,10.1rem)] xl:text-[clamp(9.6rem,-1.1922rem+13.4902vw,11.75rem)] 2xl:text-[clamp(11.75rem,-1.25rem+13.5417vw,15rem)] origin-left font-bold whitespace-nowrap text-[#F6F5FF4D] tracking-[-4%] leading-none">
+    <div className="min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[64px] flex items-end relative">
+      <div className="pb-[15vh] lg:pb-[20vh] xl:pb-[12vh] m-0 flex flex-col-reverse lg:flex-col justify-end w-full ">
+        <h1 className=" hidden lg:block lg:text-[clamp(8rem,-0.4329rem+13.1765vw,10.1rem)] xl:text-[clamp(9.9rem,-1.1431rem+13.8039vw,12.1rem)] 2xl:text-[clamp(11.75rem,-1.25rem+13.5417vw,15rem)] origin-left font-bold whitespace-nowrap text-[#F6F5FF4D] tracking-[-4%] leading-none">
           Marouane Tabaa
         </h1>
         <div className="flex justify-between lg:hidden">
@@ -27,10 +27,10 @@ const Hero = () => {
         </h1>
 
         <div className="flex items-center justify-between">
-          <p className="text-[clamp(1.375rem,0.5685rem+3.5842vw,2rem)] sm:text-[35px] md:text-[clamp(1.6875rem,-0.3831rem+4.3137vw,2.375rem)]  text-[#F6F5FF99] w-full lg:max-w-3xl lg:mb-6 font-light">
+          <p className="text-[clamp(1.375rem,0.5685rem+3.5842vw,2rem)] sm:text-[35px] md:text-[24px] xl:text-[20px] mt-4 pl-3 text-[#F6F5FF99] w-full lg:max-w-3xl lg:mb-6 font-light">
             Hi! I am Marouane a{" "}
             <span className="font-bold text-white">full stack developer</span>{" "}
-            based in Morocco, I build secure, scalable and efficient web
+            based in Morocco,<br/> I build secure, scalable and efficient web
             applications.
           </p>
           {/* <h1 className="text-[100vw]">test</h1> */}

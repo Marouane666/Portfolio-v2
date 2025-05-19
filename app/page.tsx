@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar />
       <section
         id="projects"
-        className="min-h-screen px-[16px] xl:px-[64px] pt-20 my-2 overflow-x-hidden"
+        className="min-h-screen px-[16px] xl:px-[48px] 2xl:px-[64px] pt-20 my-2 overflow-x-hidden"
       >
         <Projects />
       </section>
