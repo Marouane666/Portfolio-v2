@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { Projects } from "@/components/Projects";
 import Stack from "@/components/Stack";
-import { Xp } from "@/components/Xp";
 
 export default function Home() {
   return (
