@@ -55,9 +55,9 @@ export const Xp = () => {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 w-full">
+    <div className="flex flex-col gap-8 w-full">
       {/* Left Column - Full width on mobile */}
-      <div className="w-full md:w-1/2 space-y-8">
+      <div className="w-full space-y-8">
         <div className="flex flex-col items-center md:items-start md:block space-y-6">
           <h2 className="text-3xl md:text-5xl font-normal text-[#F6F5FF]">
             Experience

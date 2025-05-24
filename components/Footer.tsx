@@ -10,7 +10,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-[50vh] gap-[80px] relative">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen gap-[80px] relative">
       {/* Go to top button - positioned on the border */}
       <button 
         onClick={scrollToTop}

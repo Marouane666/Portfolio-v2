@@ -60,13 +60,13 @@ export function Projects() {
     },
   ];
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-[48px]">
+    <div className="w-full flex flex-col items-center justify-center gap-[18vh]">
       {projects.map((project) => (
         <div
           key={project.id}
-          className="w-full my-[12vh] flex-col lg:flex-row flex items-stretch gap-[48px] 2xl:gap-[64px]"
+          className="w-full  flex-col lg:flex-row flex items-stretch gap-[48px] 2xl:gap-[64px]"
         >
-          <div className="w-full  md:w-[60%] flex-1 flex  items-center justify-center relative aspect-[4/3] rounded-[16px] overflow-hidden">
+          <div className="w-full  md:w-[60%] flex-1 flex  items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden">
             <Image
               src={project.image}
               alt="Fleet management"
@@ -111,7 +111,7 @@ export function Projects() {
                 </span>
               </div>
             </div> */}
-            <div className="absolute bottom-0  w-full max-w-xs sm:max-w-md flex items-center justify-evenly sm:gap-10 rounded-[8px] sm:rounded-full bg-[#10100E99] backdrop-blur-md shadow-lg  py-2 mb-4">
+            <div className="absolute bottom-0  w-full max-w-xs sm:max-w-md flex items-center justify-evenly sm:gap-10 rounded-[8px] sm:rounded-[12px] bg-[#10100E99] backdrop-blur-md shadow-lg  py-[14px] mb-[32px]">
             <div className="flex items-center gap-2">
                 <Image
                   src="/techs/typescript.png"
@@ -147,7 +147,7 @@ export function Projects() {
                 </span>
               </div>
             </div>
-            test
+            
           </div>
               
           <div className="w-full lg:w-[40%] h-full flex flex-col min-w-[350px]  items-center justify-center flex-1 lg:aspect-[4/3] gap-4">
@@ -159,13 +159,24 @@ export function Projects() {
                 {project.description}
               </p>
             </div>
-            <div className="w-full max-w-[500px] 2xl:max-w-[600px] mt-10 2xl:mt-[48px] flex items-start justify-start">
+            <div className="w-full gap-[16px] max-w-[500px] 2xl:max-w-[600px] mt-10 2xl:mt-[48px] flex items-start justify-start">
             <Link
               href={project.link}
               className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
-            >
-              <div className="bg-[#252526] px-[20px] py-[8px] xl:px-[40px] 2xl:px-[42px] xl:py-[18px] rounded-[92px] flex justify-center items-center">
-                visit
+            > 
+              <div className="bg-[#252526]  gap-[8px] px-[20px] py-[8px] xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] flex justify-center items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20"/></svg>
+                <p>visit</p>
+                
+              </div>
+            </Link>
+            <Link
+              href={project.link}
+              className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
+            > 
+              <div className="bg-[#252526]  gap-[8px] px-[20px] py-[8px] xl:px-[40px] 2xl:p-[18px] xl:py-[18px] rounded-[92px] flex justify-center items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                
               </div>
             </Link>
             </div>

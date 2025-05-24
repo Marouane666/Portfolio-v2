@@ -12,7 +12,7 @@ const Stack = () => {
   ];
 
   return (
-    <section className="py-12 px-4 md:px-8 flex flex-col md:flex-row justify-center">
+    <section className=" px-4 md:px-8 flex flex-col md:flex-row justify-center">
       <div className="flex items-start justify-center md:hidden mb-4">
         <h1 className="flex text-center text-4xl lg:text-5xl font-bold">
           <span className="text-[#F6F5FF33] bg-clip-text ">My stack</span>
@@ -46,7 +46,7 @@ const Stack = () => {
                   alt={tech.name}
                   width={48}
                   height={48}
-                  className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
+                  className="h-10 w-10 sm:size-12 object-contain"
                 />
                 <span className="text-sm sm:text-base text-[#F6F5FF4D] font-normal uppercase">
                   {tech.name}
