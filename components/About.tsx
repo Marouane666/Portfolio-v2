@@ -80,7 +80,7 @@ export const About = () => {
     <div className="sticky top-[84px] bg-[#10100E] w-full gap-[16px] max-w-[500px] 2xl:max-w-[600px] mt-10 2xl:mt-[48px] flex items-start justify-start py-[16px]">
       <Link href={"/"} className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"> 
         <div className="bg-[#252526] gap-[8px] px-[24px] py-[18px] rounded-[92px] flex justify-center items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line"><path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/></svg>
           <p>Resume</p>
         </div>
       </Link>
