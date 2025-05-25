@@ -1,6 +1,6 @@
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 bg-[#10100E] border-t border-b px-[16px] md:px-[32px] xl:px-[48px] 2xl:px-[64px] border-[#F6F5FF33] h-[84px] flex items-center justify-center">
+    <nav className="sticky -webkit-sticky top-0 z-50 bg-[#10100E] border-t border-b px-[16px] md:px-[32px] xl:px-[48px] 2xl:px-[64px] border-[#F6F5FF33] h-[84px] flex items-center justify-center">
       <div className="w-full mx-auto  py-4 flex items-center justify-between">
         <ul className="w-full flex items-center justify-between">
           <li>
