@@ -59,21 +59,33 @@ export const About = () => {
       description:
         "In 2023, I graduated with a Bachelor's degree in Mathematics and Computer Science from the Faculty of Sciences Ibn Zohr in Agadir. This program provided me with a solid foundation in mathematics, focusing on statistics and probability.",
     },
-    // Add more education items
   ];
+
   return (
     <div
       id="xp"
       className="w-full flex flex-col items-center justify-center gap-[48px]"
     >
-      <div className="w-full my-[12vh] flex-col lg:flex-row flex items-stretch  justify-center gap-[48px] 2xl:gap-[64px] ">
-        {/* Text Section - Now includes both about and experience */}
-        <div className="relative  w-full lg:w-[50%] flex flex-col min-w-[350px] items-center lg:items-center">
+      <div className="w-full my-[12vh] flex-col lg:flex-row flex items-stretch justify-center gap-[48px] 2xl:gap-[64px]">
+        {/* Mobile Image - Only shows on small screens */}
+        
+
+        {/* Text Section */}
+        <div className="relative w-full lg:w-[50%] flex flex-col min-w-[350px] items-center lg:items-center">
           {/* About Section */}
           <div className="w-full flex flex-col items-start justify-start gap-[18px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px]">
             <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
+            <div className="block sm:hidden w-full aspect-[4/3] rounded-[32px] overflow-hidden relative">
+          <Image
+            src="/me.png"
+            alt="Marouane Tabaa"
+            fill
+            className="object-cover rounded-[32px]"
+            sizes="100vw"
+          />
+        </div>
             <p className="font-space font-light lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
               Hello! I am a dedicated full stack developer with a profound
               dedication to building efficient and intuitive web applications.
@@ -157,33 +169,6 @@ export const About = () => {
                 </svg>
               </div>
             </Link>
-            {/* <div className="flex gap-2 p-1 rounded-full bg-[#252526] w-full md:w-fit">
-              <button
-                onClick={() => {
-                  setActiveTab("work");
-                  document
-                    .getElementById("xp")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className={`flex-1 md:flex-none px-4 py-3 md:px-6 md:py-3 rounded-full text-sm md:text-base font-bold ${
-                  activeTab === "work"
-                    ? "bg-[#10100E] text-[#F6F5FF]"
-                    : "hover:bg-[#3A3A3A] text-[#F6F5FF66]"
-                }`}
-              >
-                Work
-              </button>
-              <button
-                onClick={() => setActiveTab("education")}
-                className={`flex-1 md:flex-none px-4 py-3 md:px-6 md:py-3 rounded-full text-sm md:text-base font-bold ${
-                  activeTab === "education"
-                    ? "bg-[#10100E] text-[#F6F5FF]"
-                    : "hover:bg-[#3A3A3A] text-[#F6F5FF66]"
-                }`}
-              >
-                Education
-              </button>
-            </div> */}
           </div>
 
           {/* Experience Section */}
@@ -234,8 +219,8 @@ export const About = () => {
           </div>
         </div>
 
-        {/* Sticky Image Section */}
-        <div className="w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
+        {/* Desktop Image - Only shows on screens larger than sm */}
+        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
           <Image
             src="/me.png"
             alt="Marouane Tabaa"

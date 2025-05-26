@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   return (
-    <div className="h-[calc(100svh-84px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[64px] flex items-end relative">
+    <div id="hero" className="h-[calc(100svh-84px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[64px] flex items-end relative">
       <div className="pb-[15vh] lg:pb-[20vh] xl:pb-[12vh] m-0 flex flex-col-reverse lg:flex-col justify-end w-full ">
         <h1 className=" hidden lg:block lg:text-[clamp(8rem,-0.4329rem+13.1765vw,10.1rem)] xl:text-[clamp(9.9rem,-1.1431rem+13.8039vw,12.1rem)] 2xl:text-[clamp(11.75rem,-1.25rem+13.5417vw,15rem)] origin-left font-bold whitespace-nowrap text-[#F6F5FF4D] tracking-[-4%] leading-none">
           Marouane Tabaa
