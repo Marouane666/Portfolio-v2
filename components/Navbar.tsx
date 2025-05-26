@@ -21,7 +21,7 @@ export function Navbar() {
         },
         {
           root: null,
-          rootMargin: '-30% 0px -40% 0px',
+          rootMargin: '-10% 0px -10% 0px',
           threshold: 0.1,
         }
       );
@@ -34,11 +34,11 @@ export function Navbar() {
   }, []);
 
   const getLinkClass = (section: string) => 
-    `font-space uppercase font-bold text-[12px] transition-all duration-300 ${
+    `font-space uppercase font-bold  transition-all duration-300 ${
       (activeSection === section || manuallyHovered === section) ? 
       'text-[#F6F5FF] underline decoration-4 underline-offset-[32px]' : 
       'text-[#F6F5FF66]'
-    } relative before:content-['>'] before:absolute before:-left-6 before:top-1/2 before:-translate-y-1/2 ${
+    } relative before:content-['>'] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 ${
       (activeSection === section || manuallyHovered === section) ? 
       'before:opacity-100' : 'before:opacity-0'
     } hover:text-[#F6F5FF] hover:before:opacity-100`;
