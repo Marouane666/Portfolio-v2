@@ -77,7 +77,7 @@ export const About = () => {
             <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
-            <div className="block sm:hidden w-full aspect-[4/3] rounded-[32px] overflow-hidden relative">
+            <div className="block lg:hidden w-full aspect-[4/3] rounded-[32px] overflow-hidden relative">
           <Image
             src="/me.png"
             alt="Marouane Tabaa"
@@ -86,7 +86,7 @@ export const About = () => {
             sizes="100vw"
           />
         </div>
-            <p className="font-space font-light lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
+            <p className="font-space font-light text-[18px] lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
               Hello! I am a dedicated full stack developer with a profound
               dedication to building efficient and intuitive web applications.
               My professional path is decorated with extensive experience in
@@ -185,14 +185,14 @@ export const About = () => {
                         {exp.title}
                       </h3>
                       <div className="flex items-end justify-start gap-6 mt-2">
-                        <p className="font-light text-[#F6F5FF66] text-sm md:text-base">
+                        <p className="font-light text-[#F6F5FF66] text-[18px] md:text-base">
                           {exp.period}
                         </p>
-                        <p className="font-light text-[#F6F5FF66] text-sm md:text-base">
+                        <p className="font-light text-[#F6F5FF66] text-[18px] md:text-base">
                           {exp.company}
                         </p>
                       </div>
-                      <p className="text-[#F6F5FFB2] text-sm md:text-lg mt-5 w-full">
+                      <p className="text-[#F6F5FFB2] text-[18px] md:text-lg mt-5 w-full">
                         {exp.description}
                       </p>
                     </div>
@@ -220,7 +220,7 @@ export const About = () => {
         </div>
 
         {/* Desktop Image - Only shows on screens larger than sm */}
-        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
+        <div className="hidden lg:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
           <Image
             src="/me.png"
             alt="Marouane Tabaa"

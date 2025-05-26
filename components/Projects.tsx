@@ -11,7 +11,7 @@ export function Projects() {
       image: "/projects/isyaa.png",
       title: "Fleet Management Application 1",
       description:
-        "This comprehensive fleet management platform provides real-time tracking of vehicles, detailed historical route analysis, and insightful analytics on driver behaviors and vehicle performance. It also streamlines the management of documents and staff for each subscribing company. Built on a robust microservices architecture, the application ensures enhanced security with JWT authentication and role-based access controls.",
+        "Fleet management platform with real-time vehicle tracking, historical route analysis & driver analytics. Offers document/staff management tools. Built with microservices architecture, JWT authentication & role-based access.",
       stack: [
         {
           icon: "/techs/spring.png",
@@ -37,7 +37,7 @@ export function Projects() {
       image: "/projects/isyaa.png",
       title: "Fleet Management Application 1",
       description:
-        "This comprehensive fleet management platform provides real-time tracking of vehicles, detailed historical route analysis, and insightful analytics on driver behaviors and vehicle performance. It also streamlines the management of documents and staff for each subscribing company. Built on a robust microservices architecture, the application ensures enhanced security with JWT authentication and role-based access controls.",
+        "Fleet management platform with real-time vehicle tracking, historical route analysis & driver analytics. Offers document/staff management tools. Built with microservices architecture, JWT authentication & role-based access.",
       stack: [
         {
           icon: "/techs/spring.png",
@@ -155,7 +155,7 @@ export function Projects() {
               <h1 className="font-space font-normal text-[22px] sm:text-[48px] xl:text-[40px] 2xl:text-[48px] leading-[54px] tracking-[-4%] text-[#F6F5FF]">
                 Fleet Management Application
               </h1>
-              <p className="font-space  font-light lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
+              <p className="font-space text-[18px] font-light lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
                 {project.description}
               </p>
             </div>

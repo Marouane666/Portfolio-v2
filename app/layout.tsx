@@ -4,6 +4,7 @@ import "./globals.css";
 import { TailwindSize } from "@/components/TailwindSize";
 import { Space_Grotesk } from "next/font/google";
 
+import { LenisContext } from "@studio-freight/react-lenis/types";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "700"], // choose the weights you need
