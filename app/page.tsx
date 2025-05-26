@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="w-full h-full bg-[#10100E]">
+    <main className="w-full h-full bg-[#10100E] ">
       <FloatingContactButton />
       <Hero />
       <Navbar />
@@ -49,7 +49,7 @@ export default function Home() {
       <section
         id="about"
         data-section="about"
-        className="min-h-screen px-[16px] md:px-[32px] xl:px-[48px] 2xl:px-[64px] py-[18vh] border-t border-[#3E3E3E]"
+        className="min-h-screen px-[16px] md:px-[32px] xl:px-[48px] 2xl:px-[64px] py-[18vh] border-t border-[#3E3E3E] "
       >
         <div className="pt-20 -mt-20" />
         <About />    

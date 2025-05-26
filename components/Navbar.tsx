@@ -44,7 +44,7 @@ export function Navbar() {
     } hover:text-[#F6F5FF] hover:before:opacity-100`;
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#10100E] border-t border-b px-[16px] md:px-[32px] xl:px-[48px] border-[#F6F5FF33] h-[84px] flex items-center justify-center overflow-hidden">
+    <nav className="overflow-x-hidden sticky top-0 z-50 bg-[#10100E] border-t border-b px-[16px] md:px-[32px] xl:px-[48px] border-[#F6F5FF33] h-[84px] flex items-center justify-center overflow-hidden">
       <div className="w-full py-4 flex items-center justify-evenly">
         <ul className="w-full flex items-center justify-between">
           {['projects', 'stack', 'about'].map((section) => (
