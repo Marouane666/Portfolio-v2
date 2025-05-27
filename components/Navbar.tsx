@@ -21,7 +21,7 @@ export function Navbar() {
         },
         {
           root: null,
-          rootMargin: '-10% 0px -10% 0px',
+          rootMargin: '-20% 0px -20% 0px',
           threshold: 0.1,
         }
       );
@@ -34,11 +34,11 @@ export function Navbar() {
   }, []);
 
   const getLinkClass = (section: string) => 
-    `font-space uppercase font-bold  transition-all duration-300 ${
+    `font-space uppercase font-bold  text-[15px] transition-all duration-300 ${
       (activeSection === section || manuallyHovered === section) ? 
       'text-[#F6F5FF] underline decoration-4 underline-offset-[32px]' : 
       'text-[#F6F5FF66]'
-    } relative before:content-['>'] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 ${
+    } relative lg:before:content-['>'] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 ${
       (activeSection === section || manuallyHovered === section) ? 
       'before:opacity-100' : 'before:opacity-0'
     } hover:text-[#F6F5FF] hover:before:opacity-100`;
@@ -63,10 +63,10 @@ export function Navbar() {
               </a>
             </li>
           ))}
-          <li className="hidden lg:block mr-[-1px]">
+          <li className=" mr-[-1px]">
             <a
               href="#contact"
-              className={`font-space rounded-[100px] py-[9px] px-[16px] uppercase font-bold transition-all duration-300 ${
+              className={`font-space rounded-[100px] items-center inline-flex h-[40px] px-[12px] uppercase font-bold transition-all duration-300 ${
                 activeSection === 'contact' ? 
                 'bg-[#10100e] border border-white text-[#F6F5FF]' : 
                 'bg-white text-[#10100E] hover:border hover:border-white hover:bg-[#10100e] hover:text-[#F6F5FF]'
@@ -76,7 +76,7 @@ export function Navbar() {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              get in touch
+              contact
             </a>
           </li>
         </ul>

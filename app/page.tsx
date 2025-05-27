@@ -1,6 +1,5 @@
 "use client";
 import { About } from "@/components/About";
-import FloatingContactButton from "@/components/FloatingContactButton";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
@@ -24,7 +23,6 @@ export default function Home() {
 
   return (
     <main className="w-full h-full bg-[#10100E] ">
-      <FloatingContactButton />
       <Hero />
       <Navbar />
       

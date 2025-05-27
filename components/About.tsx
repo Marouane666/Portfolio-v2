@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 export const About = () => {
-  const [activeTab] = useState<"work" | "education">("work");
+  const [activeTab, setActiveTab] = useState<"work" | "education">("work");
 
   const workExperience = [
     {
@@ -66,18 +66,18 @@ export const About = () => {
       id="xp"
       className="w-full flex flex-col items-center justify-center gap-[48px]"
     >
-      <div className="w-full my-[12vh] flex-col lg:flex-row flex items-stretch justify-center gap-[48px] 2xl:gap-[64px]">
+      <div className="w-full my-[12vh] flex-col sm:flex-row flex items-stretch justify-center gap-[48px] 2xl:gap-[64px]">
         {/* Mobile Image - Only shows on small screens */}
         
 
         {/* Text Section */}
-        <div className="relative w-full lg:w-[50%] flex flex-col min-w-[350px] items-center lg:items-center">
+        <div className="relative w-full sm:w-[50%] flex flex-col min-w-[350px] items-center lg:items-center">
           {/* About Section */}
           <div className="w-full flex flex-col items-start justify-start gap-[18px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
             <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
-            <div className="flex lg:hidden w-[95%] aspect-[4/3] rounded-[32px] overflow-hidden relative overflow-x-hidden  items-center">
+            <div className="flex sm:hidden w-[95%] aspect-[4/3] rounded-[32px] overflow-hidden relative overflow-x-hidden  items-center">
           <Image
             src="/me.png"
             alt="Marouane Tabaa"
@@ -99,12 +99,12 @@ export const About = () => {
           </div>
 
           {/* mini navbar */}
-          <div className="sticky top-[84px] bg-[#10100E] w-full gap-[16px] max-w-[500px] 2xl:max-w-[600px] mt-10 2xl:mt-[48px] flex items-start justify-start py-[16px]">
+          <div className="sticky top-[84px] bg-[#10100E] w-full gap-[8px] items-center justify-start mt-10 2xl:mt-[48px] flex py-[16px]">
             <Link
               href={"/"}
-              className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
+              className="uppercase font-bold text-[16px] leading-[20px]"
             >
-              <div className="bg-[#252526] gap-[8px] px-[24px] py-[18px] rounded-[92px] flex justify-center items-center">
+              <div className="bg-[#252526] gap-[4px] px-[12px] inline-flex h-[48px]  rounded-[92px] justify-center items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -121,14 +121,14 @@ export const About = () => {
                   <path d="m6 11 6 6 6-6" />
                   <path d="M19 21H5" />
                 </svg>
-                <p>Resume</p>
+                <p className="text-[15px]">Resume</p>
               </div>
             </Link>
             <Link
               href={"/"}
-              className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
+              className="uppercase font-bold text-[15px] leading-[20px]"
             >
-              <div className="bg-[#252526] gap-[8px] p-[18px] rounded-[92px] flex justify-center items-center">
+              <div className="bg-[#252526]  rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -148,9 +148,9 @@ export const About = () => {
             </Link>
             <Link
               href={"/"}
-              className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
+              className="uppercase font-bold text-[16px] leading-[20px]"
             >
-              <div className="bg-[#252526] gap-[8px] p-[18px] rounded-[92px] flex justify-center items-center">
+              <div className="bg-[#252526] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -169,6 +169,55 @@ export const About = () => {
                 </svg>
               </div>
             </Link>
+            <div className=" flex  rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center ">
+          <div
+              className={`uppercase rounded-full inline-flex items-center h-10 w-10 justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+                activeTab === "work"
+                  ? "bg-black text-white"
+                  : "bg-transparent text-white/40"
+              }`}
+              onClick={() => setActiveTab("work")}
+            >
+              <div className="flex items-center justify-end gap-2 ">
+                 <Image
+                src="/work.svg"
+                alt="Work"
+                width={0}
+                height={0}
+                className={`size-5 transition-all duration-300 ${activeTab === "work"
+                  ? "opacity-100"
+                  : "opacity-40"
+              }`}
+                />
+                <span className="hidden lg:block">Work</span>
+              </div>
+             
+            </div>
+            <div
+              className={`uppercase rounded-full inline-flex items-center h-10 w-10  justify-center text-[14px] cursor-pointer transition-all duration-300 ${
+                activeTab === "education"
+                  ? "bg-black text-white"
+                  : "bg-transparent text-white/40"
+              }`}
+              onClick={() => setActiveTab("education")}
+            >
+              <div className="flex items-center justify-end gap-2">
+                <Image
+                src="/education.svg"
+                alt="Education"
+                width={0}
+                height={0}
+                className={`size-5 transition-all duration-300 ${activeTab === "education"
+                  ? "opacity-100"
+                  : "opacity-40"
+              }`}
+                />
+                <span className="hidden lg:block">Education</span>
+              </div>
+              
+            </div>
+            
+          </div>
           </div>
 
           {/* Experience Section */}
@@ -220,7 +269,7 @@ export const About = () => {
         </div>
 
         {/* Desktop Image - Only shows on screens larger than sm */}
-        <div className="hidden lg:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
+        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
           <Image
             src="/me.png"
             alt="Marouane Tabaa"
