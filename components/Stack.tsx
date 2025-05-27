@@ -12,14 +12,14 @@ const Stack = () => {
   ];
 
   return (
-    <section className=" px-4 md:px-8 flex flex-col md:flex-row justify-center">
-      <div className="flex items-start justify-center md:hidden mb-4">
-        <h1 className="flex text-center text-4xl lg:text-5xl font-bold">
+    <section className=" flex flex-col md:flex-row justify-center">
+      <div className="flex items-start justify-start md:hidden mb-4">
+        <h1 className="flex text-start text-5xl lg:text-5xl font-bold">
           <span className="text-[#F6F5FF33] bg-clip-text ">My stack</span>
         </h1>
       </div>
 
-      <div className="max-w-4xl w-full relative">
+      <div className=" md:px-8  w-full lg:max-w-4xl relative">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-0 mx-auto overflow-hidden">
           {/* Heading */}
 

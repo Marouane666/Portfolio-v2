@@ -68,25 +68,24 @@ export const About = () => {
     >
       <div className="w-full my-[12vh] flex-col sm:flex-row flex items-stretch justify-center gap-[48px] 2xl:gap-[64px]">
         {/* Mobile Image - Only shows on small screens */}
-        
 
         {/* Text Section */}
-        <div className="relative w-full sm:w-[50%] flex flex-col min-w-[350px] items-center lg:items-center">
+        <div className="relative w-full sm:w-[50%] flex flex-col sm:min-w-[350px] items-center justify-start lg:items-center">
           {/* About Section */}
           <div className="w-full flex flex-col items-start justify-start gap-[18px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
             <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
-            <div className="flex sm:hidden w-[95%] aspect-[4/3] rounded-[32px] overflow-hidden relative overflow-x-hidden  items-center">
-          <Image
-            src="/me.png"
-            alt="Marouane Tabaa"
-            fill
-            className="object-cover rounded-[32px] "
-            sizes="100vw"
-          />
-        </div>
-            <p className="font-space font-light text-[18px] lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
+            <div className="flex sm:hidden w-full aspect-[4/3] rounded-[16px] overflow-hidden relative overflow-x-hidden  items-center">
+              <Image
+                src="/me.png"
+                alt="Marouane Tabaa"
+                fill
+                className="object-cover rounded-[32px] "
+                sizes="100vw"
+              />
+            </div>
+            <p className="font-space px-2 lg:px-0 font-light text-[18px] lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
               Hello! I am a dedicated full stack developer with a profound
               dedication to building efficient and intuitive web applications.
               My professional path is decorated with extensive experience in
@@ -99,125 +98,123 @@ export const About = () => {
           </div>
 
           {/* mini navbar */}
-          <div className="sticky top-[84px] bg-[#10100E] w-full gap-[8px] items-center justify-start mt-10 2xl:mt-[48px] flex py-[16px]">
-            <Link
-              href={"/"}
-              className="uppercase font-bold text-[16px] leading-[20px]"
-            >
-              <div className="bg-[#252526] gap-[4px] px-[12px] inline-flex h-[48px]  rounded-[92px] justify-center items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line"
-                >
-                  <path d="M12 17V3" />
-                  <path d="m6 11 6 6 6-6" />
-                  <path d="M19 21H5" />
-                </svg>
-                <p className="text-[15px]">Resume</p>
-              </div>
-            </Link>
-            <Link
-              href={"/"}
-              className="uppercase font-bold text-[15px] leading-[20px]"
-            >
-              <div className="bg-[#252526]  rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  className="lucide lucide-github-icon lucide-github"
-                >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                  <path d="M9 18c-4.51 2-5-2-7-2" />
-                </svg>
-              </div>
-            </Link>
-            <Link
-              href={"/"}
-              className="uppercase font-bold text-[16px] leading-[20px]"
-            >
-              <div className="bg-[#252526] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  className="lucide lucide-linkedin-icon lucide-linkedin"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-              </div>
-            </Link>
-            <div className=" flex  rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center ">
-          <div
-              className={`uppercase rounded-full inline-flex items-center h-10 w-10 justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-                activeTab === "work"
-                  ? "bg-black text-white"
-                  : "bg-transparent text-white/40"
-              }`}
-              onClick={() => setActiveTab("work")}
-            >
-              <div className="flex items-center justify-end gap-2 ">
-                 <Image
-                src="/work.svg"
-                alt="Work"
-                width={0}
-                height={0}
-                className={`size-5 transition-all duration-300 ${activeTab === "work"
-                  ? "opacity-100"
-                  : "opacity-40"
-              }`}
-                />
-                <span className="hidden lg:block">Work</span>
-              </div>
-             
+          <div className="sticky top-[84px] max-w-[500px] 2xl:max-w-[600px] bg-[#10100E] w-full  items-center justify-between mt-10 2xl:mt-[48px] flex py-[16px]  gap-4">
+            <div className="flex gap-2">
+              <Link
+                href={"/"}
+                className="uppercase font-bold text-[16px] leading-[20px]"
+              >
+                <div className="bg-[#252526] gap-[4px] px-[12px] inline-flex h-[48px]  rounded-[92px] justify-center items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line"
+                  >
+                    <path d="M12 17V3" />
+                    <path d="m6 11 6 6 6-6" />
+                    <path d="M19 21H5" />
+                  </svg>
+                  <p className="text-[15px]">Resume</p>
+                </div>
+              </Link>
+              <Link
+                href={"/"}
+                className="uppercase font-bold text-[15px] leading-[20px]"
+              >
+                <div className="bg-[#252526] rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-github-icon lucide-github"
+                  >
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                </div>
+              </Link>
+              <Link
+                href={"/"}
+                className="uppercase font-bold text-[16px] leading-[20px]"
+              >
+                <div className="bg-[#252526] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-linkedin-icon lucide-linkedin"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect width="4" height="12" x="2" y="9" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </div>
+              </Link>
             </div>
-            <div
-              className={`uppercase rounded-full inline-flex items-center h-10 w-10  justify-center text-[14px] cursor-pointer transition-all duration-300 ${
-                activeTab === "education"
-                  ? "bg-black text-white"
-                  : "bg-transparent text-white/40"
-              }`}
-              onClick={() => setActiveTab("education")}
-            >
-              <div className="flex items-center justify-end gap-2">
-                <Image
-                src="/education.svg"
-                alt="Education"
-                width={0}
-                height={0}
-                className={`size-5 transition-all duration-300 ${activeTab === "education"
-                  ? "opacity-100"
-                  : "opacity-40"
-              }`}
-                />
-                <span className="hidden lg:block">Education</span>
+
+            <div className="flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center ">
+              <div
+                className={`uppercase rounded-full inline-flex items-center h-10 w-10 lg:w-auto  lg:px-2 justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+                  activeTab === "work"
+                    ? "bg-black text-white"
+                    : "bg-transparent text-white/40"
+                }`}
+                onClick={() => setActiveTab("work")}
+              >
+                <div className="flex items-center justify-end gap-2 ">
+                  <Image
+                    src="/work.svg"
+                    alt="Work"
+                    width={0}
+                    height={0}
+                    className={`size-5 transition-all duration-300 ${
+                      activeTab === "work" ? "opacity-100" : "opacity-40"
+                    }`}
+                  />
+                  <span className="hidden lg:inline">Work</span>
+                </div>
               </div>
-              
+              <div
+                className={`uppercase rounded-full inline-flex items-center h-10 w-10 lg:w-auto lg:px-2 justify-center text-[14px] cursor-pointer transition-all duration-300 ${
+                  activeTab === "education"
+                    ? "bg-black text-white"
+                    : "bg-transparent text-white/40"
+                }`}
+                onClick={() => setActiveTab("education")}
+              >
+                <div className="flex items-center justify-end gap-2">
+                  <Image
+                    src="/education.svg"
+                    alt="Education"
+                    width={0}
+                    height={0}
+                    className={`size-5 transition-all duration-300 ${
+                      activeTab === "education" ? "opacity-100" : "opacity-40"
+                    }`}
+                  />
+                  <span className="hidden lg:inline">Education</span>
+                </div>
+              </div>
             </div>
-            
-          </div>
           </div>
 
           {/* Experience Section */}
@@ -226,7 +223,7 @@ export const About = () => {
               <div className="flex flex-col items-start space-y-6"></div>
             </div>
 
-            <div className="w-full space-y-6 md:space-y-14">
+            <div className="w-full space-y-10 md:space-y-14">
               {activeTab === "work"
                 ? workExperience.map((exp, index) => (
                     <div key={index} className="">
