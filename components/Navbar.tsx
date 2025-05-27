@@ -6,17 +6,25 @@ export function Navbar() {
   const [manuallyHovered, setManuallyHovered] = useState<string | null>(null);
 
   useEffect(() => {
-    const sections = ['projects', 'stack', 'about'];
+    const sections = ['hero', 'projects', 'stack', 'about'];
     const observers: IntersectionObserver[] = [];
 
     sections.forEach(sectionId => {
-      const section = document.querySelector(`[data-section="${sectionId}"]`);
+      const section = document.querySelector(
+        sectionId === 'hero'
+          ? `#${sectionId}`
+          : `[data-section="${sectionId}"]`
+      );
       if (!section) return;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setActiveSection(sectionId);
+            if (sectionId === 'hero') {
+              setActiveSection(null);
+            } else {
+              setActiveSection(sectionId);
+            }
           }
         },
         {
