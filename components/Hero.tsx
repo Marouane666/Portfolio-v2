@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);
@@ -21,28 +22,42 @@ const Hero = () => {
     <div
       id="hero"
       className="h-[calc(100svh-83px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[48px] flex flex-col items-end justify-between relative"
-    ><div className="flex sm:hidden rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center mt-4">
-            <div
-              className={`items-center justify-center uppercase rounded-full w-10 inline-flex h-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-                language === "en"
-                  ? "bg-black text-white"
-                  : "bg-transparent text-gray-400"
-              }`}
-              onClick={() => setLanguage("en")}
-            >
-              en
-            </div>
-            <div
-              className={`items-center justify-center uppercase rounded-full w-10 inline-flex h-10 text-[14px] cursor-pointer transition-all duration-300 ${
-                language === "fr"
-                  ? "bg-black text-white"
-                  : "bg-transparent text-gray-400"
-              }`}
-              onClick={() => setLanguage("fr")}
-            >
-              fr
-            </div>
-          </div>
+    >
+      <div className="flex sm:hidden rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center mt-4 relative w-[88px] h-[48px]">
+        {language === "en" && (
+          <motion.div
+            layoutId="toggleBall"
+            className="absolute w-10 h-10 rounded-full bg-black"
+            transition={{ type: "spring", stiffness: 700, damping: 30 }}
+            style={{ left: 4 }}
+          />
+        )}
+        {language === "fr" && (
+          <motion.div
+            layoutId="toggleBall"
+            className="absolute w-10 h-10 rounded-full bg-black"
+            transition={{ type: "spring", stiffness: 700, damping: 30 }}
+            style={{ right: 4 }}
+          />
+        )}
+
+        <div
+          className={`z-10 items-center justify-center uppercase rounded-full w-10 inline-flex h-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+            language === "en" ? "text-white" : "text-gray-400"
+          }`}
+          onClick={() => setLanguage("en")}
+        >
+          en
+        </div>
+        <div
+          className={`z-10 items-center justify-center uppercase rounded-full w-10 inline-flex h-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+            language === "fr" ? "text-white" : "text-gray-400"
+          }`}
+          onClick={() => setLanguage("fr")}
+        >
+          fr
+        </div>
+      </div>
       <div className="pb-[6vh] flex flex-col-reverse  justify-end w-full overflow-x-hidden">
         <div className="hidden sm:flex items-center  justify-between">
           <Image
@@ -127,7 +142,6 @@ const Hero = () => {
               fr
             </div>
           </div>
-          
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useState } from "react";
 export const About = () => {
   const [activeTab, setActiveTab] = useState<"work" | "education">("work");
@@ -171,50 +172,62 @@ export const About = () => {
               </Link>
             </div>
 
-            <div className="flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center ">
-              <div
-                className={`uppercase rounded-full inline-flex items-center h-10 w-10 lg:w-auto  lg:px-2 justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-                  activeTab === "work"
-                    ? "bg-black text-white"
-                    : "bg-transparent text-white/40"
-                }`}
-                onClick={() => setActiveTab("work")}
-              >
-                <div className="flex items-center justify-end gap-2 ">
-                  <Image
-                    src="/work.svg"
-                    alt="Work"
-                    width={0}
-                    height={0}
-                    className={`size-5 transition-all duration-300 ${
-                      activeTab === "work" ? "opacity-100" : "opacity-40"
-                    }`}
-                  />
-                  <span className="hidden lg:inline">Work</span>
-                </div>
-              </div>
-              <div
-                className={`uppercase rounded-full inline-flex items-center h-10 w-10 lg:w-auto lg:px-2 justify-center text-[14px] cursor-pointer transition-all duration-300 ${
-                  activeTab === "education"
-                    ? "bg-black text-white"
-                    : "bg-transparent text-white/40"
-                }`}
-                onClick={() => setActiveTab("education")}
-              >
-                <div className="flex items-center justify-end gap-2">
-                  <Image
-                    src="/education.svg"
-                    alt="Education"
-                    width={0}
-                    height={0}
-                    className={`size-5 transition-all duration-300 ${
-                      activeTab === "education" ? "opacity-100" : "opacity-40"
-                    }`}
-                  />
-                  <span className="hidden lg:inline">Education</span>
-                </div>
-              </div>
-            </div>
+            <div className="sm:hidden relative flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center w-[112px] h-12">
+  {activeTab === "work" && (
+    <motion.div
+      layoutId="toggleBall"
+      className="absolute w-11 h-11 rounded-full bg-black"
+      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      style={{ left: 4 }}
+    />
+  )}
+  {activeTab === "education" && (
+    <motion.div
+      layoutId="toggleBall"
+      className="absolute w-11 h-11 rounded-full bg-black"
+      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+      style={{ right: 4 }}
+    />
+  )}
+
+  <div
+    onClick={() => setActiveTab("work")}
+    className={`z-10 uppercase rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+      activeTab === "work" ? "text-white" : "text-white/40"
+    }`}
+  >
+    <div className="flex items-center justify-center w-full h-full">
+      <Image
+        src="/work.svg"
+        alt="Work"
+        width={20}
+        height={20}
+        className={`transition-all duration-300 ${
+          activeTab === "work" ? "opacity-100" : "opacity-40"
+        }`}
+      />
+    </div>
+  </div>
+
+  <div
+    onClick={() => setActiveTab("education")}
+    className={`z-10 uppercase rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+      activeTab === "education" ? "text-white" : "text-white/40"
+    }`}
+  >
+    <div className="flex items-center justify-center w-full h-full">
+      <Image
+        src="/education.svg"
+        alt="Education"
+        width={20}
+        height={20}
+        className={`transition-all duration-300 ${
+          activeTab === "education" ? "opacity-100" : "opacity-40"
+        }`}
+      />
+    </div>
+  </div>
+</div>
           </div>
 
           {/* Experience Section */}
