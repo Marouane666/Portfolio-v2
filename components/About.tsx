@@ -173,58 +173,49 @@ export const About = () => {
             </div>
 
             <div className="lg:hidden relative flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center w-[88px] h-12">
-  {activeTab === "work" && (
-    <motion.div
-      layoutId="toggleBall"
-      className="absolute w-10 h-10 rounded-full bg-black"
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      style={{ left: 4 }}
-    />
-  )}
-  {activeTab === "education" && (
-    <motion.div
-      layoutId="toggleBall"
-      className="absolute w-10 h-10 rounded-full bg-black"
-      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      style={{ right: 4 }}
-    />
-  )}
+              <motion.div
+                layoutId="toggleBall"
+                className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
+                animate={{
+                  x: activeTab === "education" ? 40 : 0, // 88 (container) - 48 (button) = ~40px
+                }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
 
-  <div
-    onClick={() => setActiveTab("work")}
-    className={`z-10 rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-      activeTab === "work" ? "text-white" : "text-white/40"
-    }`}
-  >
-    <Image
-      src="/work.svg"
-      alt="Work"
-      width={20}
-      height={20}
-      className={`transition-all duration-300 ${
-        activeTab === "work" ? "opacity-100" : "opacity-40"
-      }`}
-    />
-  </div>
+              <div
+                onClick={() => setActiveTab("work")}
+                className={`z-10 rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+                  activeTab === "work" ? "text-white" : "text-white/40"
+                }`}
+              >
+                <Image
+                  src="/work.svg"
+                  alt="Work"
+                  width={20}
+                  height={20}
+                  className={`transition-all duration-300 ${
+                    activeTab === "work" ? "opacity-100" : "opacity-40"
+                  }`}
+                />
+              </div>
 
-  <div
-    onClick={() => setActiveTab("education")}
-    className={`z-10 rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-      activeTab === "education" ? "text-white" : "text-white/40"
-    }`}
-  >
-    <Image
-      src="/education.svg"
-      alt="Education"
-      width={20}
-      height={20}
-      className={`transition-all duration-300 ${
-        activeTab === "education" ? "opacity-100" : "opacity-40"
-      }`}
-    />
-  </div>
-</div>
-
+              <div
+                onClick={() => setActiveTab("education")}
+                className={`z-10 rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+                  activeTab === "education" ? "text-white" : "text-white/40"
+                }`}
+              >
+                <Image
+                  src="/education.svg"
+                  alt="Education"
+                  width={20}
+                  height={20}
+                  className={`transition-all duration-300 ${
+                    activeTab === "education" ? "opacity-100" : "opacity-40"
+                  }`}
+                />
+              </div>
+            </div>
           </div>
 
           {/* Experience Section */}
