@@ -73,16 +73,16 @@ export const About = () => {
         {/* Text Section */}
         <div className="relative w-full sm:w-[50%] flex flex-col sm:min-w-[350px] items-center justify-start lg:items-center">
           {/* About Section */}
-          <div className="w-full flex flex-col items-start justify-start gap-[18px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
-            <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
+          <div className="w-full flex flex-col items-start justify-start gap-[32px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
+            <h1 className="pl-4 capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
-            <div className="flex sm:hidden w-full aspect-[4/3] rounded-[16px] overflow-hidden relative overflow-x-hidden  items-center">
+            <div className="flex mb-2 sm:hidden w-full aspect-[4/3] rounded-[16px] overflow-hidden relative overflow-x-hidden  items-center">
               <Image
                 src="/me.png"
                 alt="Marouane Tabaa"
                 fill
-                className="object-cover rounded-[32px] "
+                className="object-cover rounded-[16px] "
                 sizes="100vw"
               />
             </div>
@@ -219,7 +219,7 @@ export const About = () => {
           </div>
 
           {/* Experience Section */}
-          <div className="flex flex-col gap-8 w-full max-w-[500px] 2xl:max-w-[600px] mt-16 overflow-x-hidden">
+          <div className="flex flex-col gap-8 w-full max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
             <div className="w-full space-y-8">
               <div className="flex flex-col items-start space-y-6"></div>
             </div>

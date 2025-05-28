@@ -21,35 +21,34 @@ const Hero = () => {
   return (
     <div
       id="hero"
-      className="h-[calc(100svh-83px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[48px] flex flex-col items-end justify-between relative"
+      className="h-[calc(100svh-83px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[48px] flex flex-col items-end justify-between lg:justify-end relative"
     >
       <div className="flex sm:hidden relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] mt-4 w-[88px] h-[48px]">
-  <motion.div
-    layoutId="toggleBall"
-    className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
-    animate={{
-      x: language === "fr" ? 40 : 0, // 88 - 48 = 40px shift right
-    }}
-    transition={{ type: "spring", stiffness: 700, damping: 30 }}
-  />
-  <div
-    className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-      language === "en" ? "text-white" : "text-gray-400"
-    }`}
-    onClick={() => setLanguage("en")}
-  >
-    en
-  </div>
-  <div
-    className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-      language === "fr" ? "text-white" : "text-gray-400"
-    }`}
-    onClick={() => setLanguage("fr")}
-  >
-    fr
-  </div>
-</div>
-
+        <motion.div
+          layoutId="toggleBall"
+          className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
+          animate={{
+            x: language === "fr" ? 40 : 0, // 88 - 48 = 40px shift right
+          }}
+          transition={{ type: "spring", stiffness: 700, damping: 30 }}
+        />
+        <div
+          className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+            language === "en" ? "text-white" : "text-gray-400"
+          }`}
+          onClick={() => setLanguage("en")}
+        >
+          en
+        </div>
+        <div
+          className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+            language === "fr" ? "text-white" : "text-gray-400"
+          }`}
+          onClick={() => setLanguage("fr")}
+        >
+          fr
+        </div>
+      </div>
 
       <div className="pb-[6vh] flex flex-col-reverse  justify-end w-full overflow-x-hidden">
         <div className="hidden sm:flex items-center  justify-between">

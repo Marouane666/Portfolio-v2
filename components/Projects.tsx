@@ -60,7 +60,7 @@ export function Projects() {
   return (
     <div className="w-full flex flex-col items-center justify-center gap-[32px]">
       <div className="w-full flex items-start">
-        <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
+        <h1 className="pl-4 capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
           projects
         </h1>
       </div>
@@ -70,7 +70,7 @@ export function Projects() {
             key={project.id}
             className="w-full  flex-col lg:flex-row flex items-stretch gap-[48px] 2xl:gap-[64px]"
           >
-            <div className="w-full  md:w-[60%] flex-1 flex  items-center justify-center relative aspect-[4/3] rounded-[16px] lg:rounded-[32px] overflow-hidden">
+            <div className="w-full  md:w-[60%] flex-1 flex  items-center justify-center relative aspect-[4/3] rounded-[16px] overflow-hidden">
               <Image
                 src={project.image}
                 alt="Fleet management"
@@ -157,7 +157,7 @@ export function Projects() {
 
             <div className="w-full lg:w-[40%] h-full flex flex-col  items-center justify-center flex-1 lg:aspect-[4/3] gap-4">
               <div className="flex max-w-[500px] 2xl:max-w-[600px] flex-col items-start justify-start gap-[18px] md:gap-[26px] 2xl:gap-[40px]">
-                <h1 className="font-space px-2 lg:px-0 font-normal text-[22px] sm:text-[48px] xl:text-[40px] 2xl:text-[48px] leading-[54px] tracking-[-4%] text-[#F6F5FF]">
+                <h1 className="font-space px-2 lg:px-0 font-normal text-[22px] sm:text-[48px] xl:text-[40px] 2xl:text-[48px]  tracking-[-4%] text-[#F6F5FF]">
                   Fleet Management Application
                 </h1>
                 <p className="font-space px-2 lg:px-0 text-[18px] font-light lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
@@ -169,7 +169,7 @@ export function Projects() {
                   href={project.link}
                   className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
                 >
-                  {/* <div className="bg-[#252526]  gap-[8px] px-[20px] inline-flex h-12 xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] justify-center items-center">
+                  <div className="bg-[#252526]  gap-[8px] px-[20px] inline-flex h-12 xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -187,7 +187,7 @@ export function Projects() {
                       <path d="M2 12h20" />
                     </svg>
                     <p>visit</p>
-                  </div> */}
+                  </div>
                   {/* <MathButtonWith3DShapes /> */}
                 </Link>
                 <Link

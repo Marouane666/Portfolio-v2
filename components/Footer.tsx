@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth"
+  //   });
+  // };
 
   return (
     <div className="w-full flex flex-col items-center justify-center min-h-screen gap-[80px] relative">
       {/* Go to top button - positioned on the border */}
-      <button 
+      {/* <button 
         onClick={scrollToTop}
         className="mt-4 lg:mr-[-32px] items-center justify-center absolute top-0 right-0 inline-flex h-12 w-12 rounded-full bg-[#10100E] hover:bg-[#3a3a3a] transition-colors duration-200 border border-[#FFFFFF33]  gap-1"
         aria-label="Go to top"
@@ -26,7 +26,7 @@ const Footer = () => {
               className="size-5 rotate-180"
                />
         
-      </button>
+      </button> */}
 
       <div className="flex flex-col w-full items-center justify-center">
         <h1 className="text-[#F6F5FF33] font-bold text-5xl mb-[40px] md:hidden">

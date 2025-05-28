@@ -13,17 +13,17 @@ const Stack = () => {
 
   return (
     <section className=" flex flex-col md:flex-row justify-center">
-      <div className="flex items-start justify-start md:hidden mb-4">
+      <div className="flex items-start justify-start md:hidden mb-[32px]">
         <h1 className="flex text-start text-5xl lg:text-5xl font-bold">
-          <span className="text-[#F6F5FF33] bg-clip-text ">My stack</span>
+          <span className="pl-4 text-[#F6F5FF33] bg-clip-text ">My stack</span>
         </h1>
       </div>
 
-      <div className=" md:px-8  w-full lg:max-w-4xl relative">
+      <div className="md:px-8  w-full lg:max-w-4xl relative">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-0 mx-auto overflow-hidden">
           {/* Heading */}
 
-          <h1 className="hidden md:block absolute z-10 left-1/2 -translate-x-1/2 top-[-120px] md:left-auto md:right-[-20%] lg:right-[-30%] md:top-1/2 md:-translate-y-1/2 text-4xl lg:text-5xl font-bold text-center  px-8 py-4 rounded-[32px] w-full md:w-fit ">
+          <h1 className="hidden md:block absolute z-10 left-1/2 -translate-x-1/2 top-[-120px] md:left-auto md:right-[-20%] lg:right-[-30%] md:top-1/2 md:-translate-y-1/2 text-4xl lg:text-5xl font-bold text-center  px-8 py-4 rounded-[16px] w-full md:w-fit ">
             <span className="text-[#F6F5FF33] bg-clip-text ">My Stack</span>
           </h1>
 
@@ -34,10 +34,10 @@ const Stack = () => {
               className={`
                 p-4 sm:p-6 bg-gradient-to-br from-[#ffffff03] to-[#ffffff01] border border-[#3e3e3e]
                 aspect-square
-                ${index === 0 ? "sm:rounded-tl-[32px]" : ""}
-                ${index === 2 ? "sm:rounded-tr-[32px]" : ""}
-                ${index === 0 ? "rounded-tl-[32px]" : ""}
-                ${index === 1 ? "rounded-tr-[32px] sm:rounded-tr-none" : ""}
+                ${index === 0 ? "sm:rounded-tl-[16px]" : ""}
+                ${index === 2 ? "sm:rounded-tr-[16px]" : ""}
+                ${index === 0 ? "rounded-tl-[16px]" : ""}
+                ${index === 1 ? "rounded-tr-[16px] sm:rounded-tr-none" : ""}
               `}
             >
               <div className="h-full flex flex-col items-center justify-center gap-2 sm:gap-3">
@@ -89,9 +89,9 @@ const Stack = () => {
               className={`
                 p-4 sm:p-6 bg-gradient-to-br from-[#ffffff03] to-[#ffffff01] border border-[#3e3e3e]
                 aspect-square
-                ${index === 0 ? "sm:rounded-bl-[32px]" : ""}
-                ${index === 2 ? "rounded-br-[32px]" : ""}
-                ${index === 1 ? "rounded-bl-[32px] sm:rounded-bl-none" : ""}
+                ${index === 0 ? "sm:rounded-bl-[16px]" : ""}
+                ${index === 2 ? "rounded-br-[16px]" : ""}
+                ${index === 1 ? "rounded-bl-[16px] sm:rounded-bl-none" : ""}
               `}
             >
               <div className="h-full flex flex-col items-center justify-center gap-2 sm:gap-3">
