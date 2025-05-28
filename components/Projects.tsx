@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import MathButtonWith3DShapes from "./MathButtonWith3DShapes";
+
 
 export function Projects() {
   const projects = [
