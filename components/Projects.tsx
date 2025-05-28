@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import MathButtonWith3DShapes from "./MathButtonWith3DShapes";
 
 export function Projects() {
   const projects = [
@@ -168,7 +169,7 @@ export function Projects() {
                   href={project.link}
                   className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
                 >
-                  <div className="bg-[#252526]  gap-[8px] px-[20px] inline-flex h-12 xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] justify-center items-center">
+                  {/* <div className="bg-[#252526]  gap-[8px] px-[20px] inline-flex h-12 xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -186,13 +187,14 @@ export function Projects() {
                       <path d="M2 12h20" />
                     </svg>
                     <p>visit</p>
-                  </div>
+                  </div> */}
+                  {/* <MathButtonWith3DShapes /> */}
                 </Link>
                 <Link
                   href={project.link}
                   className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
                 >
-                  <div className="bg-[#252526] inline-flex h-12 w-12 xl:px-[40px] 2xl:p-[18px] xl:py-[18px] rounded-[92px] justify-center items-center">
+                  <div className="bg-[#252526] inline-flex h-12 w-12 rounded-[92px] justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"

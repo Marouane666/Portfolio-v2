@@ -9,17 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.8",
+    "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.15.0",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "smoothscroll-polyfill": "^0.4.4"
+    "smoothscroll-polyfill": "^0.4.4",
+    "three": "^0.176.0"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
     "@types/smoothscroll-polyfill": "^0.3.4",
+    "@types/three": "^0.176.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
