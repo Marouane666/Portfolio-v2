@@ -24,7 +24,7 @@ export function Navbar() {
               setActiveSection(null);
             } else {
               setActiveSection(sectionId);
-            }
+            } 
           }
         },
         {
