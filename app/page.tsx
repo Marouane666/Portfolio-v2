@@ -8,7 +8,6 @@ import Stack from "@/components/Stack";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SpiralExperience from "@/components/SpiralExperience";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);

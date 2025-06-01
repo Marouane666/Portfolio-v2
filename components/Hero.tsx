@@ -8,8 +8,6 @@ const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
-  const name = "MAROUANE TABAA";
-  const chars = name.split("");
   const imgRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -22,8 +20,7 @@ const Hero = () => {
     // Set initial state (tilted 3°)
     gsap.set(img, { rotation: 3 });
 
-    // Calculate padding needed to prevent clipping (10% buffer)
-    const padding = 0.1 * Math.max(200, 300); // 10% of max dimension
+    // Calculate padding needed to prevent clipping (10% buffer) // 10% of max dimension
 
     // Hover animation
     container.addEventListener("mouseenter", () => {
