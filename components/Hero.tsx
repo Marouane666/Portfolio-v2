@@ -8,8 +8,8 @@ const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
-  const imgRef = useRef(null);
-  const containerRef = useRef(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const img = imgRef.current;
@@ -22,29 +22,32 @@ const Hero = () => {
 
     // Calculate padding needed to prevent clipping (10% buffer) // 10% of max dimension
 
-    // Hover animation
-    container.addEventListener("mouseenter", () => {
+    // Define handlers so they can be removed later
+    const handleMouseEnter = () => {
       gsap.to(img, {
         rotation: -3,
         scale: 1.1,
         duration: 0.5,
         ease: "power2.out",
       });
-    });
+    };
 
-    // Mouse leave animation
-    container.addEventListener("mouseleave", () => {
+    const handleMouseLeave = () => {
       gsap.to(img, {
         rotation: 3,
         scale: 1,
         duration: 0.5,
         ease: "power2.out",
       });
-    });
+    };
+
+    // Hover animation
+    container.addEventListener("mouseenter", handleMouseEnter);
+    container.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      container.removeEventListener("mouseenter");
-      container.removeEventListener("mouseleave");
+      container.removeEventListener("mouseenter", handleMouseEnter);
+      container.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
   useEffect(() => {
@@ -65,7 +68,7 @@ const Hero = () => {
       className="h-[calc(100svh-83px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[48px] flex flex-col items-end justify-end lg:justify-end relative"
     >
       <div className="flex items-start justify-between w-full">
-        <div className=" w-[75px] h-[100px]  pointer-events-none" >
+        <div className="block sm:hidden w-[75px] h-[100px]  pointer-events-none" >
             <Image
               ref={imgRef}
               src={"/marouaneMac.png"}
