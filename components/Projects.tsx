@@ -34,7 +34,7 @@ export function Projects() {
     const rect = hoveredElementRef.current.getBoundingClientRect();
     
     // Cursor's position relative to the element's center X and center Y
-    const centerX = rect.left + rect.width / 2;
+    //const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
     // Compute vertical distance from the centerY ONLY at the centerX
