@@ -1,67 +1,68 @@
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import gsap from 'gsap';
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import gsap from "gsap";
 
 export function Projects() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isHovering, setIsHovering] = useState(false);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const xToRef = useRef<((value: number) => void) | null>(null);
   const yToRef = useRef<((value: number) => void) | null>(null);
   const hoveredElementRef = useRef<HTMLElement | null>(null);
-  
 
   // Initialize cursor animation
   useEffect(() => {
-  xToRef.current = gsap.quickTo(cursorRef.current, "x", {
-    duration: 0.5,
-    ease: "power3.out"
-  });
-  
-  yToRef.current = gsap.quickTo(cursorRef.current, "y", {
-    duration: 0.5,
-    ease: "power3.out"
-  });
-
-  const handleMouseMove = (e: MouseEvent) => {
-  const x = e.clientX - 16;
-  const y = e.clientY - 16;
-
-  if (xToRef.current) xToRef.current(x);
-  if (yToRef.current) yToRef.current(y);
-
-  if (hoveredElementRef.current) {
-    const rect = hoveredElementRef.current.getBoundingClientRect();
-    
-    // Cursor's position relative to the element's center X and center Y
-    //const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    // Compute vertical distance from the centerY ONLY at the centerX
-    // This assumes the cursor is near the centerX line of the card
-    const distanceY = e.clientY - centerY;
-
-    // Apply rotation logic: 11° base tilt + distance-based offset
-    // Negative when cursor is above centerY, positive when below
-    const sensitivity = 0.1;
-    const rotation = Math.max(-25, Math.min(25, 11 + distanceY * sensitivity));
-
-    gsap.to(cursorRef.current, {
-      rotate: rotation,
-      duration: 0.3,
-      ease: "power3.out"
+    xToRef.current = gsap.quickTo(cursorRef.current, "x", {
+      duration: 0.8,
+      ease: "power3.out",
     });
-  }
-};
 
+    yToRef.current = gsap.quickTo(cursorRef.current, "y", {
+      duration: 0.8,
+      ease: "power3.out",
+    });
 
-  window.addEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX - 16;
+      const y = e.clientY - 16;
 
-  return () => {
-    window.removeEventListener('mousemove', handleMouseMove);
-  };
-}, []);
+      if (xToRef.current) xToRef.current(x);
+      if (yToRef.current) yToRef.current(y);
 
+      if (hoveredElementRef.current) {
+        const rect = hoveredElementRef.current.getBoundingClientRect();
+
+        // Cursor's position relative to the element's center X and center Y
+        //const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Compute vertical distance from the centerY ONLY at the centerX
+        // This assumes the cursor is near the centerX line of the card
+        const distanceY = e.clientY - centerY;
+
+        // Apply rotation logic: 11° base tilt + distance-based offset
+        // Negative when cursor is above centerY, positive when below
+        const sensitivity = 0.1;
+        const rotation = Math.max(
+          -25,
+          Math.min(25, 11 + distanceY * sensitivity)
+        );
+
+        gsap.to(cursorRef.current, {
+          rotate: rotation,
+          duration: 0.3,
+          ease: "power3.out",
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   // Handle hover states
   interface TechStack {
@@ -81,12 +82,30 @@ export function Projects() {
   const handleLinkHover = (e: React.MouseEvent<HTMLElement>) => {
     setIsHovering(true);
     hoveredElementRef.current = e.currentTarget as HTMLElement;
+
+    gsap.fromTo(
+      cursorRef.current,
+      { scale: 0.8, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power3.out",
+      }
+    );
   };
 
-const handleLinkLeave = () => {
-  setIsHovering(false);
-  hoveredElementRef.current = null;
-};
+  const handleLinkLeave = () => {
+    setIsHovering(false);
+    hoveredElementRef.current = null;
+
+    gsap.to(cursorRef.current, {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.in",
+    });
+  };
 
   const projects: Project[] = [
     {
@@ -138,13 +157,13 @@ const handleLinkLeave = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center gap-[32px]">
       {/* Custom Cursor Element */}
-      <div 
+      <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 z-50 w-40 h-20 pointer-events-none transition-opacity duration-300 ${
-          isHovering ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{ transform: 'translate(-50%, -50%)', transformOrigin: 'center center' }}
-
+        className={`fixed top-0 left-0 z-50 w-40 h-20 pointer-events-none`}
+        style={{
+          transform: "translate(-50%, -50%)",
+          transformOrigin: "center center",
+        }}
       >
         <Image
           src="/customCursor.svg"
@@ -160,9 +179,9 @@ const handleLinkLeave = () => {
           Select projects
         </h1>
       </div>
-      
-      <div 
-        id='projects'
+
+      <div
+        id="projects"
         className="w-full flex flex-col items-center justify-center gap-[18vh]"
       >
         {projects.map((project) => (
