@@ -11,7 +11,7 @@ const Footer = () => {
   // };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center min-h-screen gap-[80px] relative">
+    <div className="max-h-[100svh-84px] w-full flex flex-col items-center justify-center min-h-screen gap-[80px] relative">
       {/* Go to top button - positioned on the border */}
       {/* <button 
         onClick={scrollToTop}
@@ -29,10 +29,10 @@ const Footer = () => {
       </button> */}
 
       <div className="flex flex-col w-full items-center justify-center">
-        <h1 className="text-[#F6F5FF33] font-bold text-5xl mb-[40px] md:hidden">
+        {/* <h1 className="text-[#F6F5FF33] font-bold text-5xl mb-[40px] md:hidden">
         Get in<br/>touch
-        </h1>
-        <h1 className="hidden md:block text-[#F6F5FF33] font-bold text-5xl md:text-7xl mb-6 md:mb-[40px]">
+        </h1> */}
+        <h1 className=" text-[#F6F5FF33] font-bold text-5xl md:text-7xl mb-6 md:mb-[40px]">
           Get in touch
         </h1>
         <div className="flex flex-col md:flex-row gap-4 w-full items-center justify-center">
@@ -57,9 +57,9 @@ const Footer = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-github-icon lucide-github"
                   >
                     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -79,9 +79,9 @@ const Footer = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-linkedin-icon lucide-linkedin"
                   >
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />

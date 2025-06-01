@@ -34,3 +34,5 @@ html {
 html, body {
   overflow-x: clip;
 }
+/* Hide default cursor when custom cursor is active */
+/* In your global CSS */

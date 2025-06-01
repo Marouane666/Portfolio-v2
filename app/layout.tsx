@@ -8,7 +8,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "700"], // choose the weights you need
   variable: "--font-space-grotesk",
-  display: "swap", // ensures text is displayed immediately using fallback, then swapped
+  //display: "swap", // ensures text is displayed immediately using fallback, then swapped
 });
 
 // const geistSans = localFont({

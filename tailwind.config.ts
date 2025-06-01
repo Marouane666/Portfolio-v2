@@ -29,6 +29,13 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      letterSpacing: {
+        'n4p': '-0.4em', // -4% equivalent (since 1em = 100%)
+      },
+      lineHeight: {
+        '96p': '0.96',    // 96% line height (equivalent to -4%)
+        'n4p': '0.96',    // Alternative name for -4%
+      },
     },
   },
   plugins: [],

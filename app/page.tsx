@@ -8,6 +8,7 @@ import Stack from "@/components/Stack";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SpiralExperience from "@/components/SpiralExperience";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -83,7 +84,11 @@ export default function Home() {
         <div className="pt-20 -mt-20" />
         <Projects />
       </section>
-
+        {/* <section
+        id="fibonacci">
+        <div className="h-full" />
+        <SpiralExperience />  
+        </section> */}
       <section
         id="stack"
         data-section="stack"
