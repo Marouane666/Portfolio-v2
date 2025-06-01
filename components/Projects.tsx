@@ -169,7 +169,7 @@ const handleLinkLeave = () => {
           <Link
             href={project.link}
             key={project.id}
-            className="link-element !cursor-none w-full flex-col lg:flex-row flex items-stretch gap-[48px] 2xl:gap-[64px]"
+            className="link-element w-full flex-col lg:flex-row flex items-stretch gap-[48px] 2xl:gap-[64px]"
             onMouseEnter={handleLinkHover}
             onMouseLeave={handleLinkLeave}
           >
