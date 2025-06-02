@@ -10,15 +10,6 @@ const Hero = () => {
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isFalling, setIsFalling] = useState(false);
-  const velocity = useRef(0);
-  const gravity = useRef(0.5);
-  const bounceFactor = useRef(0.7);
-  const positionY = useRef(0);
-  const rotation = useRef(0);
-  const rotationVelocity = useRef(5);
-  const animationFrameRef = useRef<number | null>(null);
-
   useEffect(() => {
     const img = imgRef.current;
     const container = containerRef.current;
