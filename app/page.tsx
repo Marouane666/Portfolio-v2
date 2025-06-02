@@ -78,7 +78,7 @@ export default function Home() {
       <section
         id="projects"
         data-section="projects"
-        className="min-h-screen px-[16px] md:px-[32px] xl:px-[48px] 2xl:px-[64px] py-[18vh] overflow-x-hidden"
+        className="min-h-screen px-[16px] md:px-[32px] xl:px-[48px] py-[18vh] overflow-x-hidden"
       >
         <div className="pt-20 -mt-20" />
         <Projects />

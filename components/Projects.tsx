@@ -1,18 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 
 export function Projects() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isHovering, setIsHovering] = useState(false);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const xToRef = useRef<((value: number) => void) | null>(null);
   const yToRef = useRef<((value: number) => void) | null>(null);
   const hoveredElementRef = useRef<HTMLElement | null>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const isInProjectsRef = useRef(false);
+  const animationRef = useRef<gsap.core.Tween | null>(null);
 
   // Initialize cursor animation
   useEffect(() => {
+    // Set initial hidden state
+    gsap.set(cursorRef.current, { scale: 0, opacity: 0 });
+    
+    // Create smooth follow animations
     xToRef.current = gsap.quickTo(cursorRef.current, "x", {
       duration: 0.8,
       ease: "power3.out",
@@ -27,27 +32,16 @@ export function Projects() {
       const x = e.clientX - 16;
       const y = e.clientY - 16;
 
-      if (xToRef.current) xToRef.current(x);
-      if (yToRef.current) yToRef.current(y);
+      xToRef.current?.(x);
+      yToRef.current?.(y);
 
-      if (hoveredElementRef.current) {
+      // Only process rotation when hovering a project
+      if (hoveredElementRef.current && isInProjectsRef.current) {
         const rect = hoveredElementRef.current.getBoundingClientRect();
-
-        // Cursor's position relative to the element's center X and center Y
-        //const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-
-        // Compute vertical distance from the centerY ONLY at the centerX
-        // This assumes the cursor is near the centerX line of the card
         const distanceY = e.clientY - centerY;
-
-        // Apply rotation logic: 11° base tilt + distance-based offset
-        // Negative when cursor is above centerY, positive when below
         const sensitivity = 0.1;
-        const rotation = Math.max(
-          -25,
-          Math.min(25, 11 + distanceY * sensitivity)
-        );
+        const rotation = Math.max(-25, Math.min(25, 11 + distanceY * sensitivity));
 
         gsap.to(cursorRef.current, {
           rotate: rotation,
@@ -57,10 +51,39 @@ export function Projects() {
       }
     };
 
+    const handleContainerEnter = () => {
+      isInProjectsRef.current = true;
+    };
+
+    const handleContainerLeave = () => {
+      isInProjectsRef.current = false;
+      hoveredElementRef.current = null;
+      
+      // FAST exit animation (0.2s) when leaving entire container
+      if (animationRef.current) animationRef.current.kill();
+      animationRef.current = gsap.to(cursorRef.current, {
+        scale: 0,
+        opacity: 0,
+        rotate: 0,
+        duration: 0.2,
+        ease: "power3.in",
+      });
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    
+    const projectsEl = projectsRef.current;
+    if (projectsEl) {
+      projectsEl.addEventListener("mouseenter", handleContainerEnter);
+      projectsEl.addEventListener("mouseleave", handleContainerLeave);
+    }
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      if (projectsEl) {
+        projectsEl.removeEventListener("mouseenter", handleContainerEnter);
+        projectsEl.removeEventListener("mouseleave", handleContainerLeave);
+      }
     };
   }, []);
 
@@ -80,12 +103,14 @@ export function Projects() {
   }
 
   const handleLinkHover = (e: React.MouseEvent<HTMLElement>) => {
-    setIsHovering(true);
     hoveredElementRef.current = e.currentTarget as HTMLElement;
 
-    gsap.fromTo(
-      cursorRef.current,
-      { scale: 0, opacity: 1 },
+    // Kill any ongoing animations
+    if (animationRef.current) animationRef.current.kill();
+    
+    // Smooth enter animation
+    animationRef.current = gsap.fromTo(cursorRef.current,
+      { scale: 0, opacity: 0 },
       {
         scale: 1,
         opacity: 1,
@@ -96,15 +121,19 @@ export function Projects() {
   };
 
   const handleLinkLeave = () => {
-    setIsHovering(false);
     hoveredElementRef.current = null;
 
-    gsap.to(cursorRef.current, {
-      scale: 0,
-      opacity: 1,
-      duration: 0.5,
-      ease: "power3.in",
-    });
+    // SLOW exit animation (0.5s) when leaving project but staying in container
+    if (isInProjectsRef.current) {
+      if (animationRef.current) animationRef.current.kill();
+      
+      animationRef.current = gsap.to(cursorRef.current, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power3.out",
+      });
+    }
   };
 
   const projects: Project[] = [
@@ -115,18 +144,9 @@ export function Projects() {
       description:
         "Fleet management platform with real-time vehicle tracking, historical route analysis & driver analytics. Offers document/staff management tools. Built with microservices architecture, JWT authentication & role-based access.",
       stack: [
-        {
-          icon: "/techs/spring.png",
-          name: "springboot",
-        },
-        {
-          icon: "/techs/kafka.png",
-          name: "kafka",
-        },
-        {
-          icon: "/techs/typescript.png",
-          name: "typescript",
-        },
+        { icon: "/techs/spring.png", name: "springboot" },
+        { icon: "/techs/kafka.png", name: "kafka" },
+        { icon: "/techs/typescript.png", name: "typescript" },
       ],
       link: "https://www.isya.ma",
     },
@@ -137,18 +157,9 @@ export function Projects() {
       description:
         "Fleet management platform with real-time vehicle tracking, historical route analysis & driver analytics. Offers document/staff management tools. Built with microservices architecture, JWT authentication & role-based access.",
       stack: [
-        {
-          icon: "/techs/spring.png",
-          name: "springboot",
-        },
-        {
-          icon: "/techs/kafka.png",
-          name: "kafka",
-        },
-        {
-          icon: "/techs/postgres.png",
-          name: "postgres",
-        },
+        { icon: "/techs/spring.png", name: "springboot" },
+        { icon: "/techs/kafka.png", name: "kafka" },
+        { icon: "/techs/postgres.png", name: "postgres" },
       ],
       link: "https://www.isya.ma",
     },
@@ -159,10 +170,12 @@ export function Projects() {
       {/* Custom Cursor Element */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 z-50 w-40 h-20 pointer-events-none`}
+        className="fixed top-0 left-0 z-50 w-40 h-20 pointer-events-none"
         style={{
           transform: "translate(-50%, -50%)",
           transformOrigin: "center center",
+          scale: 0,
+          opacity: 0
         }}
       >
         <Image
@@ -181,6 +194,7 @@ export function Projects() {
       </div>
 
       <div
+        ref={projectsRef}
         id="projects"
         className="w-full flex flex-col items-center justify-center gap-[18vh]"
       >

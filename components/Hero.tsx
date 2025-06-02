@@ -10,6 +10,14 @@ const Hero = () => {
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isFalling, setIsFalling] = useState(false);
+  const velocity = useRef(0);
+  const gravity = useRef(0.5);
+  const bounceFactor = useRef(0.7);
+  const positionY = useRef(0);
+  const rotation = useRef(0);
+  const rotationVelocity = useRef(5);
+  const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const img = imgRef.current;
@@ -18,14 +26,14 @@ const Hero = () => {
     if (!img || !container) return;
 
     // Set initial state (tilted 3°)
-    gsap.set(img, { rotation: 3 });
+    ///gsap.set(img, { rotation: 3 });
 
     // Calculate padding needed to prevent clipping (10% buffer) // 10% of max dimension
 
     // Define handlers so they can be removed later
     const handleMouseEnter = () => {
       gsap.to(img, {
-        rotation: -3,
+        rotation: 3,
         scale: 1.1,
         duration: 0.5,
         ease: "power2.out",
@@ -34,7 +42,7 @@ const Hero = () => {
 
     const handleMouseLeave = () => {
       gsap.to(img, {
-        rotation: 3,
+        rotation: 0,
         scale: 1,
         duration: 0.5,
         ease: "power2.out",
@@ -62,91 +70,90 @@ const Hero = () => {
       return () => window.removeEventListener("resize", updateHeight);
     }
   }, []);
+
+  
+
   return (
     <div
       id="hero"
-      className="h-[calc(100svh-83px)] md:min-h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] 2xl:px-[48px] flex flex-col items-end justify-end lg:justify-end relative"
+      className="h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] flex flex-col items-start justify-end lg:justify-start relative !overflow-y-hidden"
     >
-      <div className="flex items-start justify-between w-full">
-        <div className="block sm:hidden w-[75px] h-[100px]  pointer-events-none" >
-            <Image
-              ref={imgRef}
-              src={"/marouaneMac.png"}
-              alt="Marouane"
-              width={150}
-              height={150}
-              className="object-contain will-change-transform"
-              style={{
-                position: "absolute",
-                padding: "10px", // Buffer space for transformations
-              }}
-            />
-          </div>
+      {/* mobile section */}
+      <div className="flex md:hidden items-start justify-between w-full border border-red-500 ">
+        <div className="block sm:hidden w-[75px] h-[100px]  pointer-events-none">
+          <Image
+            ref={imgRef}
+            src={"/marouaneMac.png"}
+            alt="Marouane"
+            width={150}
+            height={150}
+            className="object-contain will-change-transform"
+            style={{
+              position: "absolute",
+              padding: "10px", // Buffer space for transformations
+            }}
+          />
+        </div>
         <div className="flex items-center justify-center">
           <div className="flex sm:hidden relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] mt-4 w-[88px] h-[48px] mr-2">
-          <motion.div
-            layoutId="toggleBall"
-            className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
-            animate={{
-              x: language === "fr" ? 40 : 0, // 88 - 48 = 40px shift right
-            }}
-            transition={{ type: "spring", stiffness: 700, damping: 30 }}
-          />
-          <div
-            className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-              language === "en" ? "text-white" : "text-gray-400"
-            }`}
-            onClick={() => setLanguage("en")}
-          >
-            en
+            <motion.div
+              layoutId="toggleBall"
+              className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
+              animate={{
+                x: language === "fr" ? 40 : 0, // 88 - 48 = 40px shift right
+              }}
+              transition={{ type: "spring", stiffness: 700, damping: 30 }}
+            />
+            <div
+              className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+                language === "en" ? "text-white" : "text-gray-400"
+              }`}
+              onClick={() => setLanguage("en")}
+            >
+              en
+            </div>
+            <div
+              className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
+                language === "fr" ? "text-white" : "text-gray-400"
+              }`}
+              onClick={() => setLanguage("fr")}
+            >
+              fr
+            </div>
           </div>
-          <div
-            className={`z-10 uppercase rounded-full w-10 h-10 inline-flex items-center justify-center text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-              language === "fr" ? "text-white" : "text-gray-400"
-            }`}
-            onClick={() => setLanguage("fr")}
-          >
-            fr
-          </div>
+          <button className="bg-[#252526] mt-4 md:hidden mr-3 z-10 rounded-full inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
+            <Image
+              src="/music.svg"
+              alt="Music"
+              width={0}
+              height={0}
+              className="size-5"
+            />
+          </button>
         </div>
-        <button className="bg-[#252526] mt-4 md:hidden mr-3 z-10 rounded-full inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
-          <Image
-            src="/music.svg"
-            alt="Music"
-            width={0}
-            height={0}
-            className="size-5"
-          />
-        </button>
-        </div>
-        
       </div>
 
       <div className="pb-[6vh] flex flex-col  justify-between w-full overflow-x-hidden  h-full">
-        <div className="mt-[64px] flex items-center justify-between">
+        <div className="mt-[2vh] 2xl:mt-[5vh] flex items-center justify-between">
           <div
             ref={containerRef}
-            className="relative w-[220px] h-[320px] hidden md:flex items-center justify-center" // Added buffer space
-            style={{
-              margin: "-10px", // Compensate for increased size
-            }}
+            className="relative w-1/2 h-full hidden md:flex items-center justify-start"
           >
-            <div className=" w-[200px] h-[300px] absolute pointer-events-none" />
-            <Image
-              ref={imgRef}
-              src={"/marouaneMac.png"}
-              alt="Marouane"
-              width={200}
-              height={300}
-              className="object-contain will-change-transform"
-              style={{
-                position: "absolute",
-                padding: "10px", // Buffer space for transformations
-              }}
-            />
+            <div className="max-h-[80%] w-auto flex items-center">
+              <Image
+                ref={imgRef}
+                src={"/marouaneMac.png"}
+                alt="Marouane"
+                width={150}
+                height={75}
+                className="object-contain will-change-transform"
+              />
+            </div>
           </div>
-          <div className="hidden md:block text-end font-bold text-[120px] leading-n4p text-[#F6F5FF33]">
-            <h1>
+
+          {/* Text container */}
+          <div className="hidden md:flex w-1/2 h-full items-center justify-end">
+            <h1 className="text-[70px] text-end leading-none text-[#F6F5FF33] font-bold">
               Full stack <br /> dev
             </h1>
           </div>
@@ -160,7 +167,7 @@ const Hero = () => {
             height={0}
             className="w-full"
           /> */}
-            <div className="w-full h-full py-6">
+            <div className="w-full h-full py-4">
               <MarouaneTabaa />
             </div>
 
