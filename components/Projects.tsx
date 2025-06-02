@@ -129,7 +129,7 @@ export function Projects() {
       
       animationRef.current = gsap.to(cursorRef.current, {
         scale: 0,
-        opacity: 0,
+        opacity: 1,
         duration: 0.5,
         ease: "power3.out",
       });
