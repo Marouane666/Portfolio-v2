@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { TailwindSize } from "@/components/TailwindSize";
 import { Space_Grotesk } from "next/font/google";
-
+import { MusicProvider } from "@/components/context/MusicContext";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "700"], // choose the weights you need
@@ -35,8 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.variable} antialiased`}>
-        {children}
+        <MusicProvider>
+          {children}
         <TailwindSize />
+        </MusicProvider>
+        
       </body>
     </html>
   );

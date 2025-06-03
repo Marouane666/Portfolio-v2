@@ -4,14 +4,14 @@ import Image from "next/image";
 import gsap from "gsap";
 import { motion } from "framer-motion";
 import MarouaneTabaa from "./MarouaneTabaa";
-import useBackgroundMusic from "./hooks/useBackgroundMusic";
+import { useMusic } from "./context/MusicContext";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const { togglePlayback } = useBackgroundMusic('/music/Nekcha.mp3');
+  const { togglePlayback } = useMusic();
   useEffect(() => {
     const img = imgRef.current;
     const container = containerRef.current;
