@@ -74,15 +74,15 @@ export const About = () => {
         <div className="relative w-full sm:w-[50%] flex flex-col sm:min-w-[350px] items-center justify-start lg:items-center">
           {/* About Section */}
           <div className="w-full flex flex-col items-start justify-start gap-[32px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
-            <h1 className="pl-4 capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
+            <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
             <div className="flex mb-2 sm:hidden w-full aspect-[4/3] rounded-[16px] overflow-hidden relative overflow-x-hidden  items-center">
               <Image
-                src="/me.png"
+                src="/marouane3d.png"
                 alt="Marouane Tabaa"
                 fill
-                className="object-cover rounded-[16px] "
+                className="object-cover object-top rounded-[16px] "
                 sizes="100vw"
               />
             </div>
@@ -170,6 +170,61 @@ export const About = () => {
                   </svg>
                 </div>
               </Link>
+            </div>
+            <div className="hidden lg:flex relative rounded-full px-1 py-1 bg-[#252526] justify-center items-center gap-2 font-bold h-12">
+              {/* Work Tab */}
+              <motion.div
+                layout
+                onClick={() => setActiveTab("work")}
+                className={`relative z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                  activeTab === "work" ? "text-white" : "text-white/40"
+                }`}
+              >
+                {activeTab === "work" && (
+                  <motion.div
+                    layoutId="toggleBall"
+                    className="absolute inset-0 bg-black rounded-full z-0"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+                <Image
+                  src="/work.svg"
+                  alt="Work"
+                  width={20}
+                  height={20}
+                  className={`z-10 transition-all duration-300 ${
+                    activeTab === "work" ? "opacity-100" : "opacity-40"
+                  }`}
+                />
+                <span className="z-10">Work</span>
+              </motion.div>
+
+              {/* Education Tab */}
+              <motion.div
+                layout
+                onClick={() => setActiveTab("education")}
+                className={`relative z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                  activeTab === "education" ? "text-white" : "text-white/40"
+                }`}
+              >
+                {activeTab === "education" && (
+                  <motion.div
+                    layoutId="toggleBall"
+                    className="absolute inset-0 bg-black rounded-full z-0"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+                <Image
+                  src="/education.svg"
+                  alt="Education"
+                  width={20}
+                  height={20}
+                  className={`z-10 transition-all duration-300 ${
+                    activeTab === "education" ? "opacity-100" : "opacity-40"
+                  }`}
+                />
+                <span className="z-10">Education</span>
+              </motion.div>
             </div>
 
             <div className="lg:hidden relative flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center w-[88px] h-12">
@@ -267,12 +322,12 @@ export const About = () => {
         </div>
 
         {/* Desktop Image - Only shows on screens larger than sm */}
-        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[60vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
+        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[70vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
           <Image
-            src="/me.png"
+            src="/marouane3d.png"
             alt="Marouane Tabaa"
             fill
-            className="object-cover rounded-[32px]"
+            className="object-cover object-top rounded-[32px]"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>

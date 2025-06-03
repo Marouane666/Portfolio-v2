@@ -36,13 +36,13 @@ const Footer = () => {
           Get in touch
         </h1>
         <div className="flex flex-col md:flex-row gap-4 w-full items-center justify-center">
-          <button className="px-6 md:px-[40px] inline-flex h-12 rounded-[92px] font-bold bg-[#252526] text-sm sm:text-lg md:text-xs lg:text-base  items-center gap-2">
+          <button className="px-6 md:px-[40px] inline-flex h-12 -rotate-2 rounded-[92px] font-bold bg-white text-sm sm:text-lg md:text-xs lg:text-base  items-center gap-2">
           <img
-                src="/mail.svg"
+                src="/mail2.svg"
                 alt="Mail"
                 className="size-6"
               />
-              <h2 className="text-base font-bold">Marouanetabaa@gmail.com</h2>
+              <h2 className="text-base text-[#141412] font-bold">Marouanetabaa@gmail.com</h2>
           </button>
           <div className="flex gap-2">
             <Link

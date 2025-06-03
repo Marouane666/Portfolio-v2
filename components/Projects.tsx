@@ -15,7 +15,7 @@ export function Projects() {
   // Initialize cursor animation
   useEffect(() => {
     // Set initial hidden state
-    gsap.set(cursorRef.current, { scale: 0, opacity: 0 });
+    gsap.set(cursorRef.current, { scale: 0, opacity: 0, rotate: 11});
     
     // Create smooth follow animations
     xToRef.current = gsap.quickTo(cursorRef.current, "x", {
@@ -29,27 +29,52 @@ export function Projects() {
     });
 
     const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX - 16;
-      const y = e.clientY - 16;
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
 
-      xToRef.current?.(x);
-      yToRef.current?.(y);
+  const targetX = mouseX - 16;
+  const targetY = mouseY - 16;
 
-      // Only process rotation when hovering a project
-      if (hoveredElementRef.current && isInProjectsRef.current) {
-        const rect = hoveredElementRef.current.getBoundingClientRect();
-        const centerY = rect.top + rect.height / 2;
-        const distanceY = e.clientY - centerY;
-        const sensitivity = 0.1;
-        const rotation = Math.max(-25, Math.min(25, 11 + distanceY * sensitivity));
+  if (hoveredElementRef.current && isInProjectsRef.current) {
+    const rect = hoveredElementRef.current.getBoundingClientRect();
 
-        gsap.to(cursorRef.current, {
-          rotate: rotation,
-          duration: 0.3,
-          ease: "power3.out",
-        });
+    // Define all 4 corners
+    const corners = [
+      { x: rect.left, y: rect.top, rotation: 9 },     // Top Left
+      { x: rect.right, y: rect.top, rotation: -9 },   // Top Right
+      { x: rect.left, y: rect.bottom, rotation: -9 }, // Bottom Left
+      { x: rect.right, y: rect.bottom, rotation: 9 }, // Bottom Right
+    ];
+
+    // Find the closest corner
+    let closestCorner = corners[0];
+    let minDist = Infinity;
+    for (const corner of corners) {
+      const dx = mouseX - corner.x;
+      const dy = mouseY - corner.y;
+      const dist = dx * dx + dy * dy;
+      if (dist < minDist) {
+        minDist = dist;
+        closestCorner = corner;
       }
-    };
+    }
+
+    // Animate rotation to fixed value based on closest corner
+    gsap.to(cursorRef.current, {
+      rotate: closestCorner.rotation,
+      duration: 0.8,
+      ease: "power3.out",
+    });
+  }
+
+  // Animate position to follow the mouse
+  xToRef.current?.(targetX);
+  yToRef.current?.(targetY);
+};
+
+
+
+
 
     const handleContainerEnter = () => {
       isInProjectsRef.current = true;
@@ -63,7 +88,7 @@ export function Projects() {
       if (animationRef.current) animationRef.current.kill();
       animationRef.current = gsap.to(cursorRef.current, {
         scale: 0,
-        opacity: 0,
+        opacity: 1,
         rotate: 0,
         duration: 0.2,
         ease: "power3.in",
@@ -110,7 +135,7 @@ export function Projects() {
     
     // Smooth enter animation
     animationRef.current = gsap.fromTo(cursorRef.current,
-      { scale: 0, opacity: 0 },
+      { scale: 0, opacity: 1 },
       {
         scale: 1,
         opacity: 1,

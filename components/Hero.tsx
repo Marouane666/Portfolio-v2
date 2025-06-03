@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { motion } from "framer-motion";
-import MarouaneTabaa from "./MarouaneTabaa"; // Assuming this is a component that renders the name "Marouane Tabaa"
+import MarouaneTabaa from "./MarouaneTabaa";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);

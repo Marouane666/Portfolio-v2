@@ -48,26 +48,59 @@ export default function Home() {
   return (
     <main className="w-full h-full bg-[#10100E] ">
       <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ duration: 0.3 }}
-            onClick={scrollToTop}
-            className="mb-4 mr-4 items-center justify-center fixed z-[99999] bottom-0 right-0 inline-flex h-12 w-12 rounded-full bg-[#10100E] hover:bg-[#3a3a3a] transition-colors duration-200 border border-[#FFFFFF33] gap-1"
-            aria-label="Go to top"
-          >
-            <Image
-              src="/arrow.svg"
-              alt="Top"
-              width={0}
-              height={0}
-              className="size-5 rotate-180"
-            />
-          </motion.button>
-        )}
-      </AnimatePresence>
+  {showScrollTop && (
+    <motion.div
+      key="button-group"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 40 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="fixed bottom-4 right-4 z-[99999] flex flex-row items-end gap-x-3"
+    >
+      {/* Scroll to Top Button */}
+      <motion.button
+        key="scroll-button"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        onClick={scrollToTop}
+        className="items-center justify-center inline-flex h-12 w-12 rounded-full bg-[#10100E] hover:bg-[#3a3a3a] transition-colors duration-200 border border-[#FFFFFF33]"
+        aria-label="Go to top"
+      >
+        <Image
+          src="/arrow.svg"
+          alt="Top"
+          width={0}
+          height={0}
+          className="size-5 rotate-180"
+        />
+      </motion.button>
+
+      {/* Music Button */}
+      <motion.button
+        key="music-button"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 1 }}
+        transition={{ duration: 0.3 }} 
+        className="bg-[#252526]  inline-flex items-center justify-center h-12 w-12 rounded-full text-[14px] font-bold cursor-pointer transition-all duration-300"
+        aria-label="Music"
+      >
+        <Image
+          src="/music.svg"
+          alt="Music"
+          width={0}
+          height={0}
+          className="size-5"
+        />
+      </motion.button>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
+
 
       <section id="hero">
         <Hero />
