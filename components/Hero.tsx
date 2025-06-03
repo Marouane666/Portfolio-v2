@@ -4,12 +4,14 @@ import Image from "next/image";
 import gsap from "gsap";
 import { motion } from "framer-motion";
 import MarouaneTabaa from "./MarouaneTabaa";
+import useBackgroundMusic from "./hooks/useBackgroundMusic";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { togglePlayback } = useBackgroundMusic('/music/Nekcha.mp3');
   useEffect(() => {
     const img = imgRef.current;
     const container = containerRef.current;
@@ -247,7 +249,7 @@ const Hero = () => {
                   className="size-5"
                 />
               </button>
-              <button className="bg-[#252526] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
+              <button onClick={togglePlayback} className="bg-[#252526] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
                 <Image
                   src="/music.svg"
                   alt="Music"

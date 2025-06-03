@@ -8,9 +8,11 @@ import Stack from "@/components/Stack";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import useBackgroundMusic from "@/components/hooks/useBackgroundMusic";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const {togglePlayback } = useBackgroundMusic('/music/Nekcha.mp3');
 
   useEffect(() => {
     document.documentElement.style.scrollPaddingTop = "84px";
@@ -84,6 +86,7 @@ export default function Home() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 1 }}
         transition={{ duration: 0.3 }} 
+        onClick={togglePlayback}
         className="bg-[#252526]  inline-flex items-center justify-center h-12 w-12 rounded-full text-[14px] font-bold cursor-pointer transition-all duration-300"
         aria-label="Music"
       >
