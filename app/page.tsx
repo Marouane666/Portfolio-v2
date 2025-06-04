@@ -9,10 +9,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {useMusic} from "@/components/context/MusicContext";
+import SoundWave from "@/components/SoundWave";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const {togglePlayback } = useMusic();
+  const {isPlaying, togglePlayback } = useMusic();
 
   useEffect(() => {
     document.documentElement.style.scrollPaddingTop = "84px";
@@ -67,7 +68,7 @@ export default function Home() {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className="items-center justify-center inline-flex h-12 w-12 rounded-full bg-[#10100E] hover:bg-[#3a3a3a] transition-colors duration-200 border border-[#FFFFFF33]"
+        className="items-center justify-center hover:scale-[115%] transition-transform inline-flex h-12 w-12 rounded-full bg-[#10100E] hover:bg-[#3a3a3a] transition-colors duration-200 border border-[#FFFFFF33]"
         aria-label="Go to top"
       >
         <Image
@@ -87,16 +88,10 @@ export default function Home() {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.3 }} 
         onClick={togglePlayback}
-        className="bg-[#252526]  inline-flex items-center justify-center h-12 w-12 rounded-full text-[14px] font-bold cursor-pointer transition-all duration-300"
+        className="bg-[#252526] hover:scale-[115%] transition-transform inline-flex items-center justify-center h-12 w-12 rounded-full text-[14px] font-bold cursor-pointer transition-all duration-300"
         aria-label="Music"
       >
-        <Image
-          src="/music.svg"
-          alt="Music"
-          width={0}
-          height={0}
-          className="size-5"
-        />
+        <SoundWave isPlaying={isPlaying} />
       </motion.button>
     </motion.div>
   )}

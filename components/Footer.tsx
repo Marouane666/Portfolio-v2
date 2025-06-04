@@ -36,7 +36,8 @@ const Footer = () => {
           Get in touch
         </h1>
         <div className="flex flex-col md:flex-row gap-4 w-full items-center justify-center">
-          <button className="px-6 md:px-[40px] inline-flex h-12 -rotate-2 rounded-[92px] font-bold bg-white text-sm sm:text-lg md:text-xs lg:text-base  items-center gap-2">
+          <button className="px-6 md:px-[40px] inline-flex h-12 -rotate-3 hover:rotate-0 hover:scale-[105%] rounded-[92px] transition-transform
+ duration-300 font-bold bg-white text-sm sm:text-lg md:text-xs lg:text-base  items-center gap-2">
           <img
                 src="/mail2.svg"
                 alt="Mail"
@@ -49,7 +50,7 @@ const Footer = () => {
                 href={"/"}
                 className="uppercase font-bold text-[15px] leading-[20px]"
               >
-                <div className="bg-[#252526] rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
+                <div className="bg-[#252526] transition-colors duration-300 relative hover:bg-[#FFFFFF26] hover:scale-[115%] transition-transform  rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -71,7 +72,7 @@ const Footer = () => {
                 href={"/"}
                 className="uppercase font-bold text-[16px] leading-[20px]"
               >
-                <div className="bg-[#252526] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
+                <div className="bg-[#252526] transition-colors duration-300 hover:scale-[115%] transition-transform relative hover:bg-[#FFFFFF26] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

@@ -105,7 +105,7 @@ export const About = () => {
                 href={"/"}
                 className="uppercase font-bold text-[16px] leading-[20px]"
               >
-                <div className="bg-[#252526] gap-[4px] px-[12px] inline-flex h-[48px]  rounded-[92px] justify-center items-center">
+                <div className="bg-[#252526] hover:scale-[110%] transition-transform transition-colors duration-300 relative hover:bg-[#FFFFFF26] gap-[4px] px-[12px] inline-flex h-[48px]  rounded-[92px] justify-center items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -129,7 +129,7 @@ export const About = () => {
                 href={"/"}
                 className="uppercase font-bold text-[15px] leading-[20px]"
               >
-                <div className="bg-[#252526] rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
+                <div className="bg-[#252526] hover:scale-[115%] transition-transform transition-colors duration-300 relative hover:bg-[#FFFFFF26] rounded-[92px] inline-flex h-[48px] w-[48px] justify-center items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -151,7 +151,7 @@ export const About = () => {
                 href={"/"}
                 className="uppercase font-bold text-[16px] leading-[20px]"
               >
-                <div className="bg-[#252526] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
+                <div className="bg-[#252526] hover:scale-[115%] transition-transform transition-colors duration-300 relative hover:bg-[#FFFFFF26] inline-flex h-[48px] w-[48px] rounded-[92px] justify-center items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -171,7 +171,7 @@ export const About = () => {
                 </div>
               </Link>
             </div>
-            <div className="hidden lg:flex relative rounded-full px-1 py-1 bg-[#252526] justify-center items-center gap-2 font-bold h-12">
+            <div className="hidden lg:flex transition-colors duration-300 hover:bg-[#FFFFFF26] relative rounded-full px-1 py-1 bg-[#252526] justify-center items-center gap-2 font-bold h-12">
               {/* Work Tab */}
               <motion.div
                 layout
@@ -203,7 +203,7 @@ export const About = () => {
               <motion.div
                 layout
                 onClick={() => setActiveTab("education")}
-                className={`relative z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                className={`relative  z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
                   activeTab === "education" ? "text-white" : "text-white/40"
                 }`}
               >

@@ -5,13 +5,14 @@ import gsap from "gsap";
 import { motion } from "framer-motion";
 import MarouaneTabaa from "./MarouaneTabaa";
 import { useMusic } from "./context/MusicContext";
+import SoundWave from "./SoundWave";
 const Hero = () => {
   const [language, setLanguage] = useState<"fr" | "en">("en");
   const marouaneRef = useRef<HTMLImageElement | null>(null);
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const { togglePlayback } = useMusic();
+  const { isPlaying, togglePlayback } = useMusic();
   useEffect(() => {
     const img = imgRef.current;
     const container = containerRef.current;
@@ -24,23 +25,48 @@ const Hero = () => {
     // Calculate padding needed to prevent clipping (10% buffer) // 10% of max dimension
 
     // Define handlers so they can be removed later
-    const handleMouseEnter = () => {
-      gsap.to(img, {
-        rotation: 3,
-        scale: 1.1,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    };
+  let floatTween: gsap.core.Tween | null = null;
 
-    const handleMouseLeave = () => {
-      gsap.to(img, {
-        rotation: 0,
-        scale: 1,
-        duration: 0.5,
-        ease: "power2.out",
+const handleMouseEnter = () => {
+  // Cancel any running float to avoid overlap
+  if (floatTween) {
+    floatTween.kill();
+    floatTween = null;
+  }
+
+  gsap.to(img, {
+    rotation: 3,
+    scale: 2,
+    transformOrigin: "top left",
+    duration: 1,
+    ease: "sine.out", // Fast to slow easing
+    onComplete: () => {
+      // Floating starts only after scale finishes
+      floatTween = gsap.to(img, {
+        y: "-=10",
+        duration: 1,
+        ease: "sine.inOut", // Same as scale for consistent rhythm
+        yoyo: true,
+        repeat: -1,
       });
-    };
+    },
+  });
+};
+
+const handleMouseLeave = () => {
+  if (floatTween) {
+    floatTween.kill();
+    floatTween = null;
+  }
+
+  gsap.to(img, {
+    rotation: 0,
+    scale: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "sine.inOut", // Smooth return
+  });
+};
 
     // Hover animation
     container.addEventListener("mouseenter", handleMouseEnter);
@@ -88,7 +114,7 @@ const Hero = () => {
           />
         </div>
         <div className="flex items-center justify-center">
-          <div className="flex sm:hidden relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] mt-4 w-[88px] h-[48px] mr-2">
+          <div className="flex sm:hidden transition-colors duration-300 hover:bg-[#FFFFFF26] relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] mt-4 w-[88px] h-[48px] mr-2">
             <motion.div
               layoutId="toggleBall"
               className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
@@ -114,7 +140,7 @@ const Hero = () => {
               fr
             </div>
           </div>
-          <button className="bg-[#252526] mt-4 md:hidden mr-3 z-10 rounded-full inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
+          <button onClick={togglePlayback} className="bg-[#252526]  hover:bg-[#FFFFFF26] mt-4 md:hidden mr-3 z-10 rounded-full inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
             <Image
               src="/music.svg"
               alt="Music"
@@ -130,7 +156,7 @@ const Hero = () => {
         <div className="mt-[2vh] 2xl:mt-[5vh] flex items-center justify-between">
           <div
             ref={containerRef}
-            className="relative w-1/2 h-full hidden md:flex items-center justify-start"
+            className="relative w-auto h-full  hidden md:flex items-center justify-start"
           >
             <div className="max-h-[80%] w-auto flex items-center">
               <Image
@@ -240,7 +266,8 @@ const Hero = () => {
             </p>
             {/* <h1 className="text-[100vw]">test</h1> */}
             <div className=" hidden md:flex items-center justify-end w-full lg:w-auto">
-              <button className="bg-[#252526] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
+              
+              <button className="bg-[#252526] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center hover:scale-[115%] transition-transform h-12 w-12 hover:bg-[#FFFFFF26] text-[14px] font-bold cursor-pointer transition-all duration-300">
                 <Image
                   src="/paint.svg"
                   alt="Paint"
@@ -249,15 +276,10 @@ const Hero = () => {
                   className="size-5"
                 />
               </button>
-              <button onClick={togglePlayback} className="bg-[#252526] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
-                <Image
-                  src="/music.svg"
-                  alt="Music"
-                  width={0}
-                  height={0}
-                  className="size-5"
-                />
+              <button onClick={togglePlayback} className="bg-[#252526] hover:scale-[115%] transition-transform hover:bg-[#FFFFFF26] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
+                <SoundWave isPlaying={isPlaying} />
               </button>
+              
               {/* <div className="hidden  rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] md:flex justify-center items-center mr-[-2px]">
                 <div
                   className={`uppercase rounded-full text-[14px] p-[16px] font-bold cursor-pointer transition-all duration-300 ${
@@ -280,7 +302,7 @@ const Hero = () => {
                   fr
                 </div>
               </div> */}
-              <div className="md:flex hidden relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] w-[88px] h-[48px]">
+              <div className="md:flex hidden transition-colors duration-300 relative hover:bg-[#FFFFFF26] justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] w-[88px] h-[48px]">
                 <motion.div
                   layoutId="toggleBall"
                   className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"

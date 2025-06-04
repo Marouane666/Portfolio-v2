@@ -74,10 +74,10 @@ export function Navbar() {
           <li className=" mr-[-1px]">
             <a
               href="#contact"
-              className={`font-space rounded-[100px] items-center inline-flex h-[40px] px-[12px] uppercase font-bold transition-all duration-300 ${
+              className={`font-space -rotate-3 hover:rotate-0 hover:scale-[115%] rounded-[100px] items-center inline-flex h-[40px] px-[12px] uppercase font-bold transition-all duration-300 ${
                 activeSection === 'contact' ? 
                 'bg-[#10100e] border border-white text-[#F6F5FF]' : 
-                'bg-white text-[#10100E] hover:border hover:border-white hover:bg-[#10100e] hover:text-[#F6F5FF]'
+                'bg-white text-[#10100E] '
               }`}
               onClick={(e) => {
                 e.preventDefault();
