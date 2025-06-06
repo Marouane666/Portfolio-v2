@@ -322,7 +322,7 @@ const handleProjectLeave = (index: number) => {
               onMouseEnter={(e) => {handleLinkHover(e);
                 handleProjectHover(index);
               }}
-              onMouseLeave={(e) => {handleLinkLeave();
+              onMouseLeave={() => {handleLinkLeave();
                 handleProjectLeave(index);
               }}
             >
