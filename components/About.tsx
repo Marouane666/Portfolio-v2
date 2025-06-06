@@ -95,7 +95,7 @@ export const About = () => {
                 sizes="100vw"
               />
             </div>
-            <p className="font-space px-2 lg:px-0 font-light text-[18px] md:text-base 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
+            <p className="font-space px-0 lg:px-0 font-light text-[18px] md:text-base 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
               Full stack developer skilled in Laravel, Spring Boot, Express.js,
               and React.js. Passionate about building efficient, scalable web
               apps and microservices. Strong problem-solver with a
