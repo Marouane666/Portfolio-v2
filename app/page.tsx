@@ -10,11 +10,10 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {useMusic} from "@/components/context/MusicContext";
 import SoundWave from "@/components/SoundWave";
-
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const {isPlaying, togglePlayback } = useMusic();
-
+  
   useEffect(() => {
     document.documentElement.style.scrollPaddingTop = "84px";
 

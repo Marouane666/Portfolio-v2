@@ -2,9 +2,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export const About = () => {
   const [activeTab, setActiveTab] = useState<"work" | "education">("work");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [hasRendered, setHasRendered] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHasRendered(true);
+    }, 0); // Ensures it runs after the first paint
+    return () => clearTimeout(timer);
+  }, []);
 
   const workExperience = [
     {
@@ -12,28 +21,28 @@ export const About = () => {
       company: "Easly",
       period: "04/2021 - 06/2021",
       description:
-        "Architected a stock management system using Java Swing and MySQL, designing normalized database schemas for inventory tracking. Automated report generation reduced manual work by 25 hours/week while implementing role-based access control for security.",
+        "Built a Java Swing/MySQL stock system with normalized DB schemas, automated reports (saving 25 hrs/week), and role-based access control.",
     },
     {
       title: "Full Stack Developer",
       company: "Universal Platform",
       period: "01/2023 - 06/2023",
       description:
-        "Built a university collaboration portal using Laravel backend with React.js frontend, featuring real-time updates with WebSockets. Developed course sharing modules and tutor matching algorithms, handling 50+ concurrent users with Redis caching and REST API integrations.",
+        "Created a Laravel/React university portal with WebSockets, course sharing, tutor matching, and Redis caching, supporting 50+ users via REST APIs",
     },
     {
       title: "Junior Developer",
       company: "Vertx",
       period: "2023 - 2024",
       description:
-        "Collaborated on architecture design of a microservices-based fleet management system using React Vite + TypeScript frontend and Spring Boot backend. Implemented real-time tracking via WebSockets and Kafka event streaming for inter-service communication. Designed PostgreSQL schemas with geospatial indexing in a distributed system, reducing query times by 40% through query optimization and caching strategies.",
+        "Co-designed a fleet management system using React Vite/TS + Spring Boot microservices. Enabled real-time tracking via WebSockets/Kafka, optimized PostgreSQL with geospatial indexing (40% faster queries).",
     },
     {
       title: "Web Developer & IT Manager",
       company: "Isya",
       period: "2024 - Present",
       description:
-        "Developing real estate platform with React TS/Vite frontend and Spring Boot/MySQL backend. Implementing JWT authentication and property search algorithms, while optimizing MySQL queries to handle listings. Managing deployments with Docker containerization.",
+        "Developed real estate platform: React TS/Vite + Spring Boot/MySQL. Features JWT auth, optimized property search, MySQL tuning, and Dockerized deployments.",
     },
   ];
 
@@ -86,15 +95,11 @@ export const About = () => {
                 sizes="100vw"
               />
             </div>
-            <p className="font-space px-2 lg:px-0 font-light text-[18px] lg:text-[14px] xl:text-[18px] 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
-              Hello! I am a dedicated full stack developer with a profound
-              dedication to building efficient and intuitive web applications.
-              My professional path is decorated with extensive experience in
-              both backend and frontend realms, using technologies such as
-              Laravel, Spring Boot, Express.js, and React.js. From designing
-              scalable system architectures to deploying sophisticated
-              microservices, my journey in web development is driven by a
-              relentless curiosity and a passion for problem-solving.
+            <p className="font-space px-2 lg:px-0 font-light text-[18px] md:text-base 2xl:text-[20px] text-[#F6F5FF99] 2xl:leading-[30px]">
+              Full stack developer skilled in Laravel, Spring Boot, Express.js,
+              and React.js. Passionate about building efficient, scalable web
+              apps and microservices. Strong problem-solver with a
+              curiosity-driven approach to development.
             </p>
           </div>
 
@@ -184,7 +189,6 @@ export const About = () => {
                   <motion.div
                     layoutId="toggleBall"
                     className="absolute inset-0 bg-black rounded-full z-0"
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
                 <Image
@@ -203,7 +207,7 @@ export const About = () => {
               <motion.div
                 layout
                 onClick={() => setActiveTab("education")}
-                className={`relative  z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                className={`relative z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
                   activeTab === "education" ? "text-white" : "text-white/40"
                 }`}
               >
@@ -211,7 +215,6 @@ export const About = () => {
                   <motion.div
                     layoutId="toggleBall"
                     className="absolute inset-0 bg-black rounded-full z-0"
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
                 <Image
@@ -228,49 +231,56 @@ export const About = () => {
             </div>
 
             <div className="lg:hidden relative flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center w-[88px] h-12">
-              <motion.div
-                layoutId="toggleBall"
-                className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
-                animate={{
-                  x: activeTab === "education" ? 40 : 0, // 88 (container) - 48 (button) = ~40px
-                }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
+  {/* Work Tab */}
+  <motion.div
+    layout
+    onClick={() => setActiveTab("work")}
+    className={`relative z-10 rounded-full inline-flex items-center justify-center h-10 w-10 cursor-pointer transition-all duration-300 ${
+      activeTab === "work" ? "text-white" : "text-white/40"
+    }`}
+  >
+    {activeTab === "work" && (
+      <motion.div
+        layoutId="toggleBall"
+        className="absolute inset-0 bg-black rounded-full z-0"
+      />
+    )}
+    <Image
+      src="/work.svg"
+      alt="Work"
+      width={20}
+      height={20}
+      className={`z-10 transition-all duration-300 ${
+        activeTab === "work" ? "opacity-100" : "opacity-40"
+      }`}
+    />
+  </motion.div>
 
-              <div
-                onClick={() => setActiveTab("work")}
-                className={`z-10 rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-                  activeTab === "work" ? "text-white" : "text-white/40"
-                }`}
-              >
-                <Image
-                  src="/work.svg"
-                  alt="Work"
-                  width={20}
-                  height={20}
-                  className={`transition-all duration-300 ${
-                    activeTab === "work" ? "opacity-100" : "opacity-40"
-                  }`}
-                />
-              </div>
-
-              <div
-                onClick={() => setActiveTab("education")}
-                className={`z-10 rounded-full inline-flex items-center justify-center h-10 w-10 text-[14px] font-bold cursor-pointer transition-all duration-300 ${
-                  activeTab === "education" ? "text-white" : "text-white/40"
-                }`}
-              >
-                <Image
-                  src="/education.svg"
-                  alt="Education"
-                  width={20}
-                  height={20}
-                  className={`transition-all duration-300 ${
-                    activeTab === "education" ? "opacity-100" : "opacity-40"
-                  }`}
-                />
-              </div>
-            </div>
+  {/* Education Tab */}
+  <motion.div
+    layout
+    onClick={() => setActiveTab("education")}
+    className={`relative z-10 rounded-full inline-flex items-center justify-center h-10 w-10 cursor-pointer transition-all duration-300 ${
+      activeTab === "education" ? "text-white" : "text-white/40"
+    }`}
+  >
+    {activeTab === "education" && (
+      <motion.div
+        layoutId="toggleBall"
+        className="absolute inset-0 bg-black rounded-full z-0"
+      />
+    )}
+    <Image
+      src="/education.svg"
+      alt="Education"
+      width={20}
+      height={20}
+      className={`z-10 transition-all duration-300 ${
+        activeTab === "education" ? "opacity-100" : "opacity-40"
+      }`}
+    />
+  </motion.div>
+</div>
           </div>
 
           {/* Experience Section */}
@@ -322,14 +332,16 @@ export const About = () => {
         </div>
 
         {/* Desktop Image - Only shows on screens larger than sm */}
-        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[70vh] sticky top-[25vh] h-[calc(100vh-24vh)]">
-          <Image
-            src="/marouane3d.png"
-            alt="Marouane Tabaa"
-            fill
-            className="object-cover object-top rounded-[32px]"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+        <div className="hidden sm:block w-full md:w-[50%] flex-1 flex items-center justify-center relative aspect-[4/3] rounded-[32px] overflow-hidden max-h-[70vh] sticky top-[25vh] h-[60vh]">
+          <div className="w-full h-full">
+            <Image
+              src="/marouane3d.png"
+              alt="Marouane Tabaa"
+              fill
+              className="parallax-image object-cover object-top rounded-[32px]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </div>
     </div>

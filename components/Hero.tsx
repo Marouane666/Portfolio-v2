@@ -11,72 +11,135 @@ const Hero = () => {
   const marouaneRef = useRef<HTMLImageElement | null>(null);
   const [marouaneHeight, setMarouaneHeight] = useState<number | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const imgMobileRef = useRef<HTMLImageElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerMobileRef = useRef<HTMLDivElement | null>(null);
   const { isPlaying, togglePlayback } = useMusic();
   useEffect(() => {
-    const img = imgRef.current;
-    const container = containerRef.current;
+  const container = containerRef.current;
+  const img = imgRef.current;
 
-    if (!img || !container) return;
+  if (!container || !img) return;
 
-    // Set initial state (tilted 3°)
-    ///gsap.set(img, { rotation: 3 });
-
-    // Calculate padding needed to prevent clipping (10% buffer) // 10% of max dimension
-
-    // Define handlers so they can be removed later
   let floatTween: gsap.core.Tween | null = null;
+  let scaleTween: gsap.core.Tween | null = null;
+  let isHovering = false;
 
-const handleMouseEnter = () => {
-  // Cancel any running float to avoid overlap
-  if (floatTween) {
-    floatTween.kill();
-    floatTween = null;
-  }
+  const handleMouseEnter = () => {
+    isHovering = true;
+    
+    // Kill any existing tweens to avoid conflicts
+    if (floatTween) floatTween.kill();
+    if (scaleTween) scaleTween.kill();
 
-  gsap.to(img, {
-    rotation: 3,
-    scale: 2,
-    transformOrigin: "top left",
-    duration: 1,
-    ease: "sine.out", // Fast to slow easing
-    onComplete: () => {
-      // Floating starts only after scale finishes
-      floatTween = gsap.to(img, {
-        y: "-=10",
+    // Start the scale animation
+    scaleTween = gsap.to(img, {
+      rotation: 3,
+      scale: 2,
+      transformOrigin: "top left",
+      duration: 1,
+      ease: "sine.out",
+      onComplete: () => {
+        // Only start floating if we're still hovering
+        if (isHovering) {
+          floatTween = gsap.to(img, {
+            y: "-=10",
+            duration: 1,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1
+          });
+        }
+      }
+    });
+  };
+
+  const handleMouseLeave = () => {
+    isHovering = false;
+    
+    // Kill all animations
+    if (floatTween) floatTween.kill();
+    if (scaleTween) scaleTween.kill();
+
+    // Reset to initial state
+    gsap.to(img, {
+      rotation: 0,
+      scale: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "sine.inOut"
+    });
+  };
+
+  container.addEventListener("mouseenter", handleMouseEnter);
+  container.addEventListener("mouseleave", handleMouseLeave);
+
+  return () => {
+    container.removeEventListener("mouseenter", handleMouseEnter);
+    container.removeEventListener("mouseleave", handleMouseLeave);
+    
+    // Clean up any running animations
+    if (floatTween) floatTween.kill();
+    if (scaleTween) scaleTween.kill();
+  };
+}, []);
+useEffect(() => {
+  const container = containerMobileRef.current;
+  const img = imgMobileRef.current;
+
+  if (!container || !img) return;
+
+  let floatTween: gsap.core.Tween | null = null;
+  let scaleTween: gsap.core.Tween | null = null;
+  let isAnimating = false;
+
+  const handleClick = () => {
+    // Kill any existing tweens to avoid conflicts
+    if (floatTween) floatTween.kill();
+    if (scaleTween) scaleTween.kill();
+
+    if (!isAnimating) {
+      // Start the animation sequence
+      scaleTween = gsap.to(img, {
+        rotation: 3,
+        scale: 2,
+        transformOrigin: "top left",
         duration: 1,
-        ease: "sine.inOut", // Same as scale for consistent rhythm
-        yoyo: true,
-        repeat: -1,
+        ease: "sine.out",
+        onComplete: () => {
+          floatTween = gsap.to(img, {
+            y: "-=10",
+            duration: 1,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1
+          });
+        }
       });
-    },
-  });
-};
+      isAnimating = true;
+    } else {
+      // Reset to initial state
+      gsap.to(img, {
+        rotation: 0,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "sine.inOut"
+      });
+      isAnimating = false;
+    }
+  };
 
-const handleMouseLeave = () => {
-  if (floatTween) {
-    floatTween.kill();
-    floatTween = null;
-  }
+  container.addEventListener("click", handleClick);
 
-  gsap.to(img, {
-    rotation: 0,
-    scale: 1,
-    y: 0,
-    duration: 0.8,
-    ease: "sine.inOut", // Smooth return
-  });
-};
-
-    // Hover animation
-    container.addEventListener("mouseenter", handleMouseEnter);
-    container.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      container.removeEventListener("mouseenter", handleMouseEnter);
-      container.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
+  return () => {
+    container.removeEventListener("click", handleClick);
+    
+    // Clean up any running animations
+    if (floatTween) floatTween.kill();
+    if (scaleTween) scaleTween.kill();
+  };
+}, []);
   useEffect(() => {
     if (marouaneRef.current) {
       const updateHeight = () => {
@@ -98,23 +161,23 @@ const handleMouseLeave = () => {
       className="h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] flex flex-col items-start justify-end lg:justify-start relative !overflow-y-hidden"
     >
       {/* mobile section */}
-      <div className="flex md:hidden items-start justify-between w-full border border-red-500 ">
-        <div className="block sm:hidden w-[75px] h-[100px]  pointer-events-none">
-          <Image
-            ref={imgRef}
+      <div className="flex md:hidden items-start justify-between w-full">
+        <div ref={containerMobileRef} className="block lg:hidden w-auto h-full relative items-center justify-start mt-4">
+          <div className="w-auto flex items-center">
+            <Image
+            ref={imgMobileRef}
             src={"/marouaneMac.png"}
             alt="Marouane"
             width={150}
-            height={150}
-            className="object-contain will-change-transform"
-            style={{
-              position: "absolute",
-              padding: "10px", // Buffer space for transformations
-            }}
+            height={75}
+            className="object-contain will-change-transform w-[25vw]"
+            
           />
+          </div>
+          
         </div>
         <div className="flex items-center justify-center">
-          <div className="flex sm:hidden transition-colors duration-300 hover:bg-[#FFFFFF26] relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] mt-4 w-[88px] h-[48px] mr-2">
+          <div className="flex lg:hidden transition-colors duration-300 hover:bg-[#FFFFFF26] relative justify-between items-center rounded-[92px] px-[4px] py-[4px] font-bold bg-[#252526] mt-4 w-[88px] h-[48px] mr-2">
             <motion.div
               layoutId="toggleBall"
               className="absolute w-10 h-10 rounded-full bg-black top-1 left-1"
@@ -158,14 +221,14 @@ const handleMouseLeave = () => {
             ref={containerRef}
             className="relative w-auto h-full  hidden md:flex items-center justify-start"
           >
-            <div className="max-h-[80%] w-auto flex items-center">
+            <div className="w-auto flex items-center">
               <Image
                 ref={imgRef}
                 src={"/marouaneMac.png"}
                 alt="Marouane"
                 width={150}
                 height={75}
-                className="object-contain will-change-transform"
+                className="object-contain will-change-transform w-[13vh] xl:w-[15vh] 2xl:w-[18vh] h-auto"
               />
             </div>
           </div>
@@ -258,7 +321,7 @@ const handleMouseLeave = () => {
           />
 
           <div className="flex items-center mb-[6vh] justify-between">
-            <p className="text-[18px] sm:text-[35px]  md:text-[20px] mt-4 text-[#F6F5FF99] w-full lg:max-w-3xl lg:mb-6 font-light">
+            <p className="text-[20px] sm:text-[35px]  md:text-[20px] mt-4 text-[#F6F5FF99] w-full lg:max-w-3xl lg:mb-6 font-light">
               Hi! I am Marouane a{" "}
               <span className="font-bold text-white">full stack developer</span>{" "}
               based in Morocco,

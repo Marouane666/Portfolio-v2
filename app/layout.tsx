@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
 import { TailwindSize } from "@/components/TailwindSize";
 import { Space_Grotesk } from "next/font/google";
 import { MusicProvider } from "@/components/context/MusicContext";
+
+//import { Scroll } from "@react-three/drei";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "700"], // choose the weights you need
@@ -33,6 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
     <html lang="en">
       <body className={`${spaceGrotesk.variable} antialiased`}>
         <MusicProvider>
