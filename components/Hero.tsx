@@ -158,7 +158,7 @@ useEffect(() => {
   return (
     <div
       id="hero"
-      className="h-[calc(100vh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] flex flex-col items-start justify-end lg:justify-start relative !overflow-y-hidden"
+      className="h-[calc(100svh-84px)] px-[16px] sm:px-[32px] xl:px-[48px] flex flex-col items-start justify-end lg:justify-start relative !overflow-y-hidden"
     >
       {/* mobile section */}
       <div className="flex md:hidden items-start justify-between w-full">
