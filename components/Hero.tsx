@@ -38,7 +38,7 @@ const Hero = () => {
       scale: 2,
       transformOrigin: "top left",
       duration: 1,
-      ease: "sine.out",
+      ease: "power4.out",
       onComplete: () => {
         // Only start floating if we're still hovering
         if (isHovering) {
@@ -67,7 +67,7 @@ const Hero = () => {
       scale: 1,
       y: 0,
       duration: 0.8,
-      ease: "sine.inOut"
+      ease: "power4.out"
     });
   };
 
@@ -105,7 +105,7 @@ useEffect(() => {
         scale: 2,
         transformOrigin: "top left",
         duration: 1,
-        ease: "sine.out",
+        ease: "power4.out",
         onComplete: () => {
           floatTween = gsap.to(img, {
             y: "-=10",
@@ -124,7 +124,7 @@ useEffect(() => {
         scale: 1,
         y: 0,
         duration: 0.8,
-        ease: "sine.inOut"
+        ease: "power4.out",
       });
       isAnimating = false;
     }
@@ -234,7 +234,7 @@ useEffect(() => {
           </div>
 
           {/* Text container */}
-          <div className="hidden md:flex w-1/2 h-full items-center justify-end">
+          <div className="hidden md:flex w-1/2 h-full items-start justify-end">
             <h1 className="text-[70px] text-end leading-none text-[#F6F5FF33] font-bold">
               Full stack <br /> dev
             </h1>
@@ -329,16 +329,6 @@ useEffect(() => {
             </p>
             {/* <h1 className="text-[100vw]">test</h1> */}
             <div className=" hidden md:flex items-center justify-end w-full lg:w-auto">
-              
-              <button className="bg-[#252526] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center hover:scale-[115%] transition-transform h-12 w-12 hover:bg-[#FFFFFF26] text-[14px] font-bold cursor-pointer transition-all duration-300">
-                <Image
-                  src="/paint.svg"
-                  alt="Paint"
-                  width={0}
-                  height={0}
-                  className="size-5"
-                />
-              </button>
               <button onClick={togglePlayback} className="bg-[#252526] hover:scale-[115%] transition-transform hover:bg-[#FFFFFF26] hidden mr-3 z-10 rounded-full md:inline-flex items-center justify-center h-12 w-12 text-[14px] font-bold cursor-pointer transition-all duration-300">
                 <SoundWave isPlaying={isPlaying} />
               </button>

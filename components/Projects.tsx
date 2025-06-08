@@ -64,8 +64,8 @@ export function Projects() {
       gsap.to(mobileTechOverlayRefs.current[index], {
         y: '155%',
         opacity: 1,
-        duration: 0.5,
-        ease: 'power2.in',
+        duration: 1,
+        ease: 'power4.out',
         onComplete: () => setActiveMobileIndex(null)
       });
       return;
@@ -75,8 +75,8 @@ export function Projects() {
       gsap.to(mobileTechOverlayRefs.current[activeMobileIndex], {
         y: '155%',
         opacity: 1,
-        duration: 0.3,
-        ease: 'power2.in'
+        duration: 1,
+        ease: 'power4.in'
       });
     }
 
@@ -239,7 +239,7 @@ export function Projects() {
     {
       id: 1,
       image: "/projects/isyaa.png",
-      title: "Fleet Management Application 1",
+      title: "Fleet Management Application",
       description: "Fleet management platform with real-time vehicle tracking, historical route analysis & driver analytics. Offers document/staff management tools. Built with microservices architecture, JWT authentication & role-based access.",
       stack: [
         { icon: "/techs/spring.png", name: "springboot" },
@@ -251,7 +251,7 @@ export function Projects() {
     {
       id: 2,
       image: "/projects/isyaa.png",
-      title: "Fleet Management Application 2",
+      title: "Fleet Management Application",
       description: "Fleet management platform with real-time vehicle tracking, historical route analysis & driver analytics. Offers document/staff management tools. Built with microservices architecture, JWT authentication & role-based access.",
       stack: [
         { icon: "/techs/spring.png", name: "springboot" },
@@ -263,7 +263,7 @@ export function Projects() {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-[32px]">
+    <div className="w-full flex flex-col items-center justify-center gap-[24px]">
       {/* Custom Cursor */}
       <div
         ref={cursorRef}
@@ -299,12 +299,12 @@ export function Projects() {
           <div
             key={project.id}
             ref={(el) => { projectRefs.current[index] = el }}
-            className="w-full flex-col lg:flex-row flex items-stretch gap-[48px] 2xl:gap-[64px] group"
+            className="w-full flex-col lg:flex-row flex items-stretch gap-[32px] 2xl:gap-[64px] group"
           >
             {/* Desktop Version */}
             <Link
               href={project.link}
-              className="link-element w-full flex-col lg:flex-row hidden md:flex items-stretch gap-[48px] 2xl:gap-[64px] md:flex-1"
+              className="link-element w-full flex-col lg:flex-row hidden md:flex items-stretch gap-[32px] 2xl:gap-[64px] md:flex-1"
               onMouseEnter={(e) => {
                 handleLinkHover(e);
                 handleProjectHover(index);
@@ -356,7 +356,7 @@ export function Projects() {
 
             {/* Mobile Version */}
             <div
-              className="link-element w-full flex-col lg:flex-row flex md:hidden items-stretch gap-[48px] 2xl:gap-[64px] md:flex-1"
+              className="link-element w-full flex-col lg:flex-row flex md:hidden items-stretch gap-[32px] 2xl:gap-[64px] md:flex-1"
               onMouseEnter={handleLinkHover}
               onMouseLeave={handleLinkLeave}
             >
@@ -391,8 +391,8 @@ export function Projects() {
                 </div>
               </div>
 
-              <div className="w-full lg:w-[40%] h-full flex flex-col items-center justify-center flex-1 lg:aspect-[4/3] gap-4">
-                <div className="flex w-full xl:max-w-[500px] 2xl:max-w-[600px] flex-col items-start justify-start gap-[18px] md:gap-[26px] 2xl:gap-[40px]">
+              <div className="w-full lg:w-[40%] h-full flex flex-col items-center justify-center flex-1 lg:aspect-[4/3] gap-0">
+                <div className="flex w-full xl:max-w-[500px] 2xl:max-w-[600px] flex-col items-start justify-start gap-[16px] md:gap-[26px] 2xl:gap-[40px]">
                   <h1 className="font-space px-2 lg:px-0 font-normal text-[22px] sm:text-[48px] xl:text-[40px] 2xl:text-[48px] tracking-[-4%] text-[#F6F5FF]">
                     {project.title}
                   </h1>
@@ -404,29 +404,20 @@ export function Projects() {
             </div>
 
             {/* Mobile Visit Button */}
-            <div className="w-full gap-[16px] max-w-[500px] 2xl:max-w-[600px] mt-2 2xl:mt-[48px] flex md:hidden items-start justify-start">
+            <div className="w-full gap-[16px] max-w-[500px] 2xl:max-w-[600px] mt-0 2xl:mt-[48px] flex md:hidden items-start justify-start">
               <Link
                 href={project.link}
                 className="uppercase font-bold text-[16px] leading-[20px] tracking-[-4%]"
               >
-                <div className="bg-[#252526] gap-[8px] px-[20px] inline-flex h-12 xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] justify-center items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-globe-icon lucide-globe"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                    <path d="M2 12h20" />
-                  </svg>
+                <div className="bg-[#252526] hover:bg-[#FFFFFF26] gap-[8px] px-[20px] inline-flex h-12 xl:px-[40px] 2xl:px-[24px] xl:py-[18px] rounded-[92px] justify-center items-center">
+                  
                   <p>visit</p>
+                  <Image
+                    src="/arrow_visite.svg"
+                    alt="arrow right"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5" />
                 </div>
               </Link>
             </div>

@@ -82,7 +82,7 @@ export const About = () => {
         {/* Text Section */}
         <div className="relative w-full sm:w-[50%] flex flex-col sm:min-w-[350px] items-center justify-start lg:items-center">
           {/* About Section */}
-          <div className="w-full flex flex-col items-start justify-start gap-[32px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
+          <div className="w-full flex flex-col items-start justify-start gap-[24px] md:gap-[26px] 2xl:gap-[40px] max-w-[500px] 2xl:max-w-[600px] overflow-x-hidden">
             <h1 className="capitalize text-[#F6F5FF33] font-bold text-5xl md:text-7xl">
               about
             </h1>
@@ -176,12 +176,67 @@ export const About = () => {
                 </div>
               </Link>
             </div>
-            <div className="hidden lg:flex transition-colors duration-300 hover:bg-[#FFFFFF26] relative rounded-full px-1 py-1 bg-[#252526] justify-center items-center gap-2 font-bold h-12">
+            <div className="hidden lg:flex transition-colors duration-300 hover:bg-[#FFFFFF26] relative rounded-full px-1 py-1 bg-[#252526] justify-center items-center gap-0 font-bold h-12">
               {/* Work Tab */}
               <motion.div
                 layout
                 onClick={() => setActiveTab("work")}
-                className={`relative z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                className={`relative z-10 rounded-full inline-flex items-center gap-2 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                  activeTab === "work" ? "text-white" : "text-white/40"
+                }`}
+              >
+                {activeTab === "work" && (
+                  <motion.div
+                    layoutId="toggleBall"
+                    className="absolute inset-0 bg-[#10100E] rounded-full z-0"
+                  />
+                )}
+                <Image
+                  src="/work.svg"
+                  alt="Work"
+                  width={24}
+                  height={24}
+                  style={{ strokeWidth: 2 }}
+                  className={`z-10 transition-all duration-300 ${
+                    activeTab === "work" ? "opacity-100" : "opacity-40"
+                  }`}
+                />
+                <span className="z-10">Work</span>
+              </motion.div>
+
+              {/* Education Tab */}
+              <motion.div
+                layout
+                onClick={() => setActiveTab("education")}
+                className={`relative z-10 rounded-full inline-flex items-center gap-2 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                  activeTab === "education" ? "text-white" : "text-white/40"
+                }`}
+              >
+                {activeTab === "education" && (
+                  <motion.div
+                    layoutId="toggleBall"
+                    className="absolute inset-0 bg-[#10100E] rounded-full z-0"
+                  />
+                )}
+                <Image
+                  src="/education.svg"
+                  alt="Education"
+                  width={24}
+                  height={24}
+                  className={`z-10 transition-all duration-300 ${
+                    activeTab === "education" ? "opacity-100" : "opacity-40"
+                  }`}
+                />
+                <span className="z-10">Education</span>
+              </motion.div>
+            </div>
+
+            <div className="lg:hidden relative flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center w-[88px] h-12">
+              {/* Work Tab */}
+              <motion.div
+                layout
+                onClick={() => setActiveTab("work")}
+                className={`relative z-10 rounded-full inline-flex items-center justify-center h-10 w-10 cursor-pointer transition-all duration-300 ${
                   activeTab === "work" ? "text-white" : "text-white/40"
                 }`}
               >
@@ -200,14 +255,13 @@ export const About = () => {
                     activeTab === "work" ? "opacity-100" : "opacity-40"
                   }`}
                 />
-                <span className="z-10">Work</span>
               </motion.div>
 
               {/* Education Tab */}
               <motion.div
                 layout
                 onClick={() => setActiveTab("education")}
-                className={`relative z-10 rounded-full inline-flex items-center gap-1 justify-center h-10 px-4 text-sm cursor-pointer transition-all duration-300 ${
+                className={`relative z-10 rounded-full inline-flex items-center justify-center h-10 w-10 cursor-pointer transition-all duration-300 ${
                   activeTab === "education" ? "text-white" : "text-white/40"
                 }`}
               >
@@ -226,61 +280,8 @@ export const About = () => {
                     activeTab === "education" ? "opacity-100" : "opacity-40"
                   }`}
                 />
-                <span className="z-10">Education</span>
               </motion.div>
             </div>
-
-            <div className="lg:hidden relative flex rounded-[92px] px-[4px] font-bold py-[4px] bg-[#252526] justify-center items-center w-[88px] h-12">
-  {/* Work Tab */}
-  <motion.div
-    layout
-    onClick={() => setActiveTab("work")}
-    className={`relative z-10 rounded-full inline-flex items-center justify-center h-10 w-10 cursor-pointer transition-all duration-300 ${
-      activeTab === "work" ? "text-white" : "text-white/40"
-    }`}
-  >
-    {activeTab === "work" && (
-      <motion.div
-        layoutId="toggleBall"
-        className="absolute inset-0 bg-black rounded-full z-0"
-      />
-    )}
-    <Image
-      src="/work.svg"
-      alt="Work"
-      width={20}
-      height={20}
-      className={`z-10 transition-all duration-300 ${
-        activeTab === "work" ? "opacity-100" : "opacity-40"
-      }`}
-    />
-  </motion.div>
-
-  {/* Education Tab */}
-  <motion.div
-    layout
-    onClick={() => setActiveTab("education")}
-    className={`relative z-10 rounded-full inline-flex items-center justify-center h-10 w-10 cursor-pointer transition-all duration-300 ${
-      activeTab === "education" ? "text-white" : "text-white/40"
-    }`}
-  >
-    {activeTab === "education" && (
-      <motion.div
-        layoutId="toggleBall"
-        className="absolute inset-0 bg-black rounded-full z-0"
-      />
-    )}
-    <Image
-      src="/education.svg"
-      alt="Education"
-      width={20}
-      height={20}
-      className={`z-10 transition-all duration-300 ${
-        activeTab === "education" ? "opacity-100" : "opacity-40"
-      }`}
-    />
-  </motion.div>
-</div>
           </div>
 
           {/* Experience Section */}
@@ -297,14 +298,14 @@ export const About = () => {
                         {exp.title}
                       </h3>
                       <div className="flex items-end justify-start gap-6 mt-2">
-                        <p className="font-light text-[#F6F5FF66] text-[18px] md:text-base">
+                        <p className="font-light text-[#F6F5FF66] text-[14px] md:text-base">
                           {exp.period}
                         </p>
-                        <p className="font-light text-[#F6F5FF66] text-[18px] md:text-base">
+                        <p className="font-light text-[#F6F5FF66] text-[14px] md:text-base">
                           {exp.company}
                         </p>
                       </div>
-                      <p className="text-[#F6F5FFB2] text-[18px] md:text-lg mt-5 w-full">
+                      <p className="text-[#F6F5FFB2] text-[16px] md:text-lg mt-5 w-full">
                         {exp.description}
                       </p>
                     </div>
@@ -322,7 +323,7 @@ export const About = () => {
                           {edu.institution}
                         </p>
                       </div>
-                      <p className="text-[#F6F5FFB2] text-sm md:text-lg mt-5 w-full">
+                      <p className="text-[#F6F5FFB2] text-[16px] md:text-lg mt-5 w-full">
                         {edu.description}
                       </p>
                     </div>

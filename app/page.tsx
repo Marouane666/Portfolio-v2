@@ -53,11 +53,11 @@ export default function Home() {
   {showScrollTop && (
     <motion.div
       key="button-group"
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 1, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 40 }}
+      exit={{ opacity: 1, y: 40 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="fixed bottom-4 right-4 z-[99999] flex flex-row items-end gap-x-3"
+      className="fixed bottom-4 right-4 md:right-8 xl:right-[48px] z-[99999] flex flex-row items-end gap-x-3"
     >
       {/* Scroll to Top Button */}
       <motion.button
@@ -67,7 +67,7 @@ export default function Home() {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className="items-center justify-center hover:scale-[115%] transition-transform inline-flex h-12 w-12 rounded-full bg-[#10100E] hover:bg-[#3a3a3a] transition-colors duration-200 border border-[#FFFFFF33]"
+        className="items-center justify-center hover:scale-[115%] transition-transform inline-flex h-12 w-12 rounded-full bg-[#252526] hover:bg-[#3a3a3a] transition-colors duration-200 "
         aria-label="Go to top"
       >
         <Image

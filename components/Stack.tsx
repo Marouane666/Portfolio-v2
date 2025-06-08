@@ -14,9 +14,9 @@ const Stack = () => {
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-center md:justify-between">
-      <div className=" w-full flex items-start md:items-center  justify-start md:justify-center mb-[32px]">
+      <div className=" w-full flex items-start md:items-center  justify-start md:justify-center mb-[24px]">
         <h1 className="flex text-start text-5xl lg:text-7xl font-bold">
-          <span className="pl-4 text-[#F6F5FF33] bg-clip-text ">My stack</span>
+          <span className="text-[#F6F5FF33] bg-clip-text ">My stack</span>
         </h1>
       </div>
 
